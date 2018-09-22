@@ -1,0 +1,7 @@
+{
+  "name": "TicketSystem",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
