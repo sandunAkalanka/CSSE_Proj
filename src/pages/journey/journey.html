@@ -23,13 +23,16 @@
       </div>
 
       <div class="elements">
-          <button ion-button full ion-left (click)="getBusRoutes()" class="btn">End Journey</button>
+          <button ion-button full ion-left (click)="getTotal()" class="btn">End Journey</button>
       </div>
 
       <div padding>
         <div class="line amount">
             <ion-label class="amount">Total Amount is </ion-label>
-            <ion-label id="amount1"></ion-label>
+            <ion-list *ngFor="let route of routes">
+                <ion-label id="amount1">{{route.start}}</ion-label>
+            </ion-list>
+            
         </div>
         <!-- <div class="line">
             <ion-item>
@@ -51,7 +54,7 @@
       </div>
         
       <div class="elements">
-          <button ion-button full ion-left class="btn">Payment</button>
+          <button ion-button full ion-left class="btn" (click)="postData()">Payment</button>
       </div>
 
        

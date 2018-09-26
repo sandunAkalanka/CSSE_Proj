@@ -12,6 +12,8 @@ import { MapPage } from '../map/map';
 export class JourneyPage {
 
   options:BarcodeScannerOptions;
+  public result:any=[];
+  public data:any=[];
   public routes:any=[];
   public fare:any=[];
   public totfare:any=[];
@@ -24,10 +26,11 @@ export class JourneyPage {
   }
 
   getTotal(){
-    this.http.get('http://localhost:3001/total/tot/').pipe(
+    this.http.get('http://localhost:3001/total/').pipe(
             map(res => res.json())
     ).subscribe(response => {
-           this.routes=response;
+           this.routes=response.data;
+          console.log(this.routes);
     });
   }
 
@@ -38,6 +41,29 @@ export class JourneyPage {
     },(err)=>{
       console.log(err);
     })
+  }
+
+  postData(){
+    var url="http://localhost:3001/total";
+    this.http.post(url,{
+      start: "oop",
+      startLat: 12,
+      startLong: 45,
+      end: "kl",
+      endLat: 32,
+      endLong: 45,
+      busRoute: 144,
+      date: 2018-09-09,
+      fare:  14
+    },
+    {
+      headers:{'Content-Type':'application/json'}
+    })
+    .then(data => {
+      console.log(data.data);
+    }).catch(error => {
+      console.log(error.status);
+    });
   }
 
   getBusRoutes(){
