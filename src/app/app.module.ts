@@ -8,12 +8,22 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HistoryPage } from '../pages/history/history';
+import { LastjourneyPage } from '../pages/lastjourney/lastjourney';
+import { AlljourneysPage } from '../pages/alljourneys/alljourneys';
+import { GetinpointsPage } from '../pages/getinpoints/getinpoints';
+import { GetoffpointsPage } from '../pages/getoffpoints/getoffpoints';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    HistoryPage,
+    LastjourneyPage,
+    AlljourneysPage,
+    GetinpointsPage,
+    GetoffpointsPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +33,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    HistoryPage,
+    LastjourneyPage,
+    AlljourneysPage,
+    GetinpointsPage,
+    GetoffpointsPage
   ],
   providers: [
     StatusBar,
