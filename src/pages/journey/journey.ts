@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { MapPage } from '../map/map';
 
@@ -32,6 +32,8 @@ export class JourneyPage {
            this.routes=response.data;
           console.log(this.routes);
     });
+
+    
   }
 
   createCode(){
@@ -44,26 +46,29 @@ export class JourneyPage {
   }
 
   postData(){
-    var url="http://localhost:3001/total";
-    this.http.post(url,{
-      start: "oop",
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+    let options = new RequestOptions({ headers: headers });
+ 
+    let postParams = {
+      start: "aa",
       startLat: 12,
-      startLong: 45,
-      end: "kl",
-      endLat: 32,
-      endLong: 45,
-      busRoute: 144,
-      date: 2018-09-09,
-      fare:  14
-    },
-    {
-      headers:{'Content-Type':'application/json'}
-    })
-    .then(data => {
-      console.log(data.data);
-    }).catch(error => {
-      console.log(error.status);
-    });
+      startLong: 23,
+      end: "ss",
+      endLat: 45,
+      endLong: 69,
+      busRoute: "789",
+      date: "2018/09/09",
+      fare: 23
+    }
+    
+    this.http.post("http://localhost:3001/total/", postParams, options)
+      .subscribe(data => {
+        console.log(data['_body']);
+       }, error => {
+        console.log(error);// Error getting the data
+      });
   }
 
   getBusRoutes(){
