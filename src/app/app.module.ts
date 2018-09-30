@@ -18,6 +18,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 // import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RestProvider } from '../providers/rest/rest';
+import { IonicStorageModule } from '@ionic/storage';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { RestProvider } from '../providers/rest/rest';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     NgxQRCodeModule,
     HttpModule
   ],
@@ -49,7 +52,8 @@ import { RestProvider } from '../providers/rest/rest';
     Toast,
     DataServiceProvider,
     Geolocation,
-    RestProvider
+    RestProvider,
+    NativeGeocoder
   ]
 })
 export class AppModule {}

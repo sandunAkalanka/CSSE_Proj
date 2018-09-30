@@ -30,7 +30,6 @@ export class JourneyPage {
             map(res => res.json())
     ).subscribe(response => {
            this.routes=response.data;
-          console.log(this.routes);
     });
 
     
@@ -52,6 +51,7 @@ export class JourneyPage {
     let options = new RequestOptions({ headers: headers });
  
     let postParams = {
+      Username: "a",
       start: "aa",
       startLat: 12,
       startLong: 23,
@@ -72,11 +72,12 @@ export class JourneyPage {
   }
 
   getBusRoutes(){
-
-    this.http.get('http://localhost:3001/routes/').pipe(
+    var routNo="177";
+    this.http.get('http://localhost:3001/journey/'+routNo).pipe(
             map(res => res.json())
     ).subscribe(response => {
-           this.routes=response;
+           this.routes=response.data;
+          console.log(this.routes);
     });
   }
 

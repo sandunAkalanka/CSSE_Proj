@@ -3,11 +3,11 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Journey</ion-title>
+    <ion-title>Tickets.lk - Journey</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="background-color:mintcream">
 
     <img src="../../assets/imgs/maps.jpg"/>
     <!-- <ion-item>
@@ -15,48 +15,46 @@
     </ion-item> -->
     <!-- <button ion-button full ion-left (click)="createCode()"><ion-icon name="barcode"></ion-icon>Create Code</button> -->
     <div class="elements">
-        <button ion-button full ion-left (click)="scanCode()" class="btn">Start Journey</button>
+        <button ion-button full ion-left (click)="createCode()" class="btn" style="border-radius: 5px;">Start Journey</button>
+    </div>
+
+    <div>
+        <ion-label class="stops">Your Next Bus stops are : <br/>
+            <ion-list *ngFor="let route of routes">
+                <!-- <ion-label id="amount1">{{route.haults}}</ion-label> -->
+            </ion-list>
+        </ion-label>
     </div>
 
       <div class="elements">
-          <button ion-button full ion-left class="btn" (click)="mapPage()">Map</button>
+          <button ion-button full ion-left class="btn" (click)="mapPage()" style="border-radius: 5px;">Map</button>
       </div>
 
       <div class="elements">
-          <button ion-button full ion-left (click)="getTotal()" class="btn">End Journey</button>
+          <button ion-button full ion-left (click)="scanCode()" class="btn" style="border-radius: 5px;">End Journey</button>
       </div>
 
-      <div>
-        <div class="line amount">
-            <ion-label class="amount">Total Amount is </ion-label>
-            <ion-list *ngFor="let route of routes">
-                <ion-label id="amount1">{{route.start}}</ion-label>
-            </ion-list>
-        </div>
-        <!-- <div class="line">
-            <ion-item>
-                <ion-label>Ticket Count</ion-label>
-                <ion-select [(ngModel)]="tickets">
-                  <ion-option value="1">1</ion-option>
-                  <ion-option value="2">2</ion-option>
-                </ion-select>
-            </ion-item> 
-        </div>   -->
-               
-        <select>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-      </div>
-        
-      <div class="elements">
-          <button ion-button full ion-left class="btn" (click)="postData()">Payment</button>
-      </div>
-
-       
       
+        <div>
+            <ion-label class="stops">Total Amount is :</ion-label>
+            <ion-label></ion-label>
+        </div>
+        <div>
+            <div>
+                <ion-label style="margin-left: 15%;">Ticket count
+                    <select class="tktCount" style="margin-left: 10px;width:40px;border-radius: 5px;">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </ion-label>
+            </div> 
 
+            <div class="elements">
+                <button ion-button full ion-left class="Btmbtn" (click)="postData()" style="padding-bottom: 5px;display: inline-block;border-radius: 5px;font-size: 12px;">Payment</button>
+            </div>
+        </div>
+ 
 </ion-content>
