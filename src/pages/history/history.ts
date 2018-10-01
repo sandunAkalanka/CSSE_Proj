@@ -4,6 +4,7 @@ import { LastjourneyPage } from '../lastjourney/lastjourney';
 import { AlljourneysPage } from '../alljourneys/alljourneys';
 import { GetinpointsPage } from '../getinpoints/getinpoints';
 import { GetoffpointsPage } from '../getoffpoints/getoffpoints';
+import { ProfileViewPage } from '../profile-view/profile-view';
 
 /**
  * Generated class for the HistoryPage page.
@@ -25,6 +26,10 @@ export class HistoryPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HistoryPage');
+  }
+
+  openProfileView(){
+    this.navCtrl.push(ProfileViewPage);
   }
 
   openLastJourney(){

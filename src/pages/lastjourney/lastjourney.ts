@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the LastjourneyPage page.
@@ -15,11 +17,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LastjourneyPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  @ViewChild("map") mapElement;
+  map: any;
+
+  constructor(public navCtrl: NavController, public httpClient: HttpClient) { 
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LastjourneyPage');
+    this.initMap();
+  }
+
+  initMap(){
+    
+    // let coords = new google.maps.LatLng(25,80);
+    // let mapOptions: google.maps.MapOptions = {
+    //   center: coords,
+    //   zoom: 11,
+    //   mapTypeId: google.maps.MapTypeId.ROADMAP
+    // }
+
+    // this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions)
+
+    // let marker: google.maps.Marker = new google.maps.Marker({
+    //   map: this.map,
+    //   position: coords
+    // })
+
   }
 
 }

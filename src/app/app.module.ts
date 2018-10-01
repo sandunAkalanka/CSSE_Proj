@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+// import { HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -13,6 +16,9 @@ import { LastjourneyPage } from '../pages/lastjourney/lastjourney';
 import { AlljourneysPage } from '../pages/alljourneys/alljourneys';
 import { GetinpointsPage } from '../pages/getinpoints/getinpoints';
 import { GetoffpointsPage } from '../pages/getoffpoints/getoffpoints';
+import { ProfileViewPage } from '../pages/profile-view/profile-view';
+import { EditprofilePage } from '../pages/editprofile/editprofile';
+import { ChangepassPage } from '../pages/changepass/changepass';
 
 @NgModule({
   declarations: [
@@ -23,11 +29,16 @@ import { GetoffpointsPage } from '../pages/getoffpoints/getoffpoints';
     LastjourneyPage,
     AlljourneysPage,
     GetinpointsPage,
-    GetoffpointsPage
+    GetoffpointsPage,
+    ProfileViewPage,
+    EditprofilePage,
+    ChangepassPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,7 +49,10 @@ import { GetoffpointsPage } from '../pages/getoffpoints/getoffpoints';
     LastjourneyPage,
     AlljourneysPage,
     GetinpointsPage,
-    GetoffpointsPage
+    GetoffpointsPage,
+    ProfileViewPage,
+    EditprofilePage,
+    ChangepassPage
   ],
   providers: [
     StatusBar,
