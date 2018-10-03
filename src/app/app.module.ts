@@ -20,6 +20,7 @@ import { HttpModule } from '@angular/http';
 import { RestProvider } from '../providers/rest/rest';
 import { IonicStorageModule } from '@ionic/storage';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
     DataServiceProvider,
     Geolocation,
     RestProvider,
-    NativeGeocoder
+    NativeGeocoder,
+    QRScanner
   ]
 })
 export class AppModule {}

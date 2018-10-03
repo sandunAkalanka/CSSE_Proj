@@ -14,14 +14,20 @@
         <ion-input type="text" [(ngModel)]="qrData"></ion-input>
     </ion-item> -->
     <!-- <button ion-button full ion-left (click)="createCode()"><ion-icon name="barcode"></ion-icon>Create Code</button> -->
+
+    <div>
+        <ion-label class="user"><b>Viraj Gunathilaka</b></ion-label>
+        <ion-label class="user">Colombo, Sri Lanka</ion-label>
+    </div>
+
     <div class="elements">
-        <button ion-button full ion-left (click)="createCode()" class="btn" style="border-radius: 5px;">Start Journey</button>
+        <button ion-button full ion-left (click)="getBusRoutes()" class="btn" style="border-radius: 5px;">Start Journey</button>
     </div>
 
     <div>
         <ion-label class="stops">Your Next Bus stops are : <br/>
             <ion-list *ngFor="let route of routes">
-                <!-- <ion-label id="amount1">{{route.haults}}</ion-label> -->
+                <ion-label id="amount1">{{route.haults[0].busHault}}</ion-label>
             </ion-list>
         </ion-label>
     </div>
@@ -31,13 +37,18 @@
       </div>
 
       <div class="elements">
-          <button ion-button full ion-left (click)="scanCode()" class="btn" style="border-radius: 5px;">End Journey</button>
+          <button ion-button full ion-left (click)="getTotal()" class="btn" style="border-radius: 5px;">End Journey</button>
       </div>
 
       
         <div>
-            <ion-label class="stops">Total Amount is :</ion-label>
-            <ion-label></ion-label>
+            <ion-label class="stops">Total Amount is : 
+                <ion-label>Calculating</ion-label>
+                <ion-list *ngIf="total">
+                    <ion-label id="amount1">{{total.tot}}</ion-label>
+                </ion-list>
+            </ion-label>
+            
         </div>
         <div>
             <div>
@@ -49,11 +60,20 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
+                    
                 </ion-label>
+                <ion-label style="margin-left: 15%;">Bus Type
+                    <select id="busType" class="tktCount" style="margin-left: 10px;width:60%;border-radius: 5px;">
+                        <option value="normal">Normal Travelling Bus</option>
+                        <option value="long">Long Travelling Bus</option>
+                    </select>
+                    
+                </ion-label>
+                
             </div> 
 
             <div class="elements">
-                <button ion-button full ion-left class="Btmbtn" (click)="postData()" style="padding-bottom: 5px;display: inline-block;border-radius: 5px;font-size: 12px;">Payment</button>
+                <button ion-button full ion-left class="btn" (click)="postData()" style="border-radius: 5px;font-size: 12px;">Payment</button>
             </div>
         </div>
  

@@ -4,6 +4,7 @@ import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scan
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { MapPage } from '../map/map';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
 @Component({
   selector: 'page-journey',
@@ -15,24 +16,26 @@ export class JourneyPage {
   public result:any=[];
   public data:any=[];
   public routes:any=[];
+  public total:any;
+  public route="177";
+  public busType="normalFare";
   public fare:any=[];
   public totfare:any=[];
   qrData=null;
   createdCode=null;
   scannedCode=null;
 
-  constructor(public navCtrl: NavController,private barcodeScanner: BarcodeScanner, private http: Http) {
+  constructor(public navCtrl: NavController,private barcodeScanner: BarcodeScanner, private http: Http,private qrScanner: QRScanner) {
     
   }
 
   getTotal(){
-    this.http.get('http://localhost:3001/total/').pipe(
+    this.http.get('http://localhost:3001/total/tot/'+this.route+this.busType).pipe(
             map(res => res.json())
     ).subscribe(response => {
-           this.routes=response.data;
+           this.total=response.data;
     });
-
-    
+    console.log(this.total);
   }
 
   createCode(){
@@ -63,7 +66,7 @@ export class JourneyPage {
       fare: 23
     }
     
-    this.http.post("http://localhost:3001/total/", postParams, options)
+    this.http.post("http://localhost:3001/journey/", postParams, options)
       .subscribe(data => {
         console.log(data['_body']);
        }, error => {
@@ -85,11 +88,35 @@ export class JourneyPage {
     // this.barcodeScanner.scan().then(barcodeData=>{
     //   this.scannedCode=barcodeData.text;
     // })
-    this.barcodeScanner.scan(this.options).then((data)=>{
-      this.createdCode=data;
-    },(err)=>{
-      console.log("Error :",err);
-    })
+    // this.barcodeScanner.scan(this.options).then((data)=>{
+    //   this.createdCode=data;
+    // },(err)=>{
+    //   console.log("Error :",err);
+    // })
+
+    this.qrScanner.prepare()
+  .then((status: QRScannerStatus) => {
+     if (status.authorized) {
+       // camera permission was granted
+
+
+       // start scanning
+       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+         console.log('Scanned something', text);
+
+         this.qrScanner.hide(); // hide camera preview
+         scanSub.unsubscribe(); // stop scanning
+       });
+
+     } else if (status.denied) {
+       // camera permission was permanently denied
+       // you must use QRScanner.openSettings() method to guide the user to the settings page
+       // then they can grant the permission from there
+     } else {
+       // permission was denied, but not permanently. You can ask for permission again at a later time.
+     }
+  })
+  .catch((e: any) => console.log('Error is', e));
   }
 
   mapPage(){

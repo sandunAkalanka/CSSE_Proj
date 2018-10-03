@@ -7,10 +7,14 @@ page-journey{
     .Btmbtn{
         width:20%;
     }
+    .user{
+        text-align: center;
+        font-size: 15px;
+    }
     .stops{
         margin-left: 5%;
         margin-right: 5%;
-        padding: 1%;
+        padding: 3%;
         background-color: silver; 
         border-radius: 5px;
     }
@@ -30,9 +34,5 @@ page-journey{
     .amount{
         background-color: lightblue;
         width: 40%; 
-    }
-    #amount1{
-        background-color: lightblue;
-        width: 40%;
     }
 }

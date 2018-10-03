@@ -23,7 +23,7 @@ export class MapPage {
   previousRoutes=[]; 
   positionSubscription: Subscription;
 
-  constructor(public navCtrl: NavController,private geoLocation: Geolocation,private plt:Platform,private storage:Storage,private nativeGeocoder: NativeGeocoder) {
+  constructor(public navCtrl: NavController,private geoLocation: Geolocation,private plt:Platform,private nativeGeocoder: NativeGeocoder) {
 
   }
 
