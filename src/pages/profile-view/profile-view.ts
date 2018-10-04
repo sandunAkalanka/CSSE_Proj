@@ -22,7 +22,9 @@ import { Http } from '@angular/http';
 export class ProfileViewPage {
 
   userDetails: Observable<any>;
+  bckendIp;
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
+    this.bckendIp = localStorage.getItem('backendip');
   }
 
   ionViewDidLoad() {
@@ -34,7 +36,7 @@ export class ProfileViewPage {
   }
 
   loadUserDetails(){
-    this.httpClient.get('http://localhost:3001/user/952033310V').subscribe(data => {
+    this.httpClient.get('http://'+this.bckendIp+':3001/user/952033310V').subscribe(data => {
       // console.log(data);
       document.getElementById('vusername').innerHTML = data['data'][0].fname + ' ' + data['data'][0].lname;
       document.getElementById('vnic').innerHTML = data['data'][0].nic;

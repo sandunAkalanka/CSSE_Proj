@@ -23,8 +23,10 @@ import swal from 'sweetalert2';
 })
 export class EditprofilePage {
   userDetails: Observable<any>;
+  bckendIp;
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, public http: Http) {
-    this.userDetails = this.httpClient.get('http://localhost:3001/user/952033310V');
+    this.bckendIp=localStorage.getItem('backendip');
+    this.userDetails = this.httpClient.get('http://'+this.bckendIp+':3001/user/952033310V');
     this.userDetails.subscribe(data => {
       // console.log('my data: ', data.data[0]);
       document.getElementById('efullname').innerHTML = data.data[0].fname + ' ' + data.data[0].lname;
@@ -56,7 +58,7 @@ export class EditprofilePage {
       "email": this.eemail
     }
 
-    this.http.put("http://localhost:3001/user/952033310V", postParams)
+    this.http.put("http://"+this.bckendIp+":3001/user/952033310V", postParams)
       .subscribe(data => {
         // console.log(data['_body']);
         swal({

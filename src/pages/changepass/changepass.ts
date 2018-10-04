@@ -17,7 +17,9 @@ import swal from 'sweetalert2';
 })
 export class ChangepassPage {
 
+  bckendIp;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+    this.bckendIp = localStorage.getItem('backendip');
   }
 
   ionViewDidLoad() {
@@ -50,7 +52,7 @@ export class ChangepassPage {
       confirmButtonText: 'Yes'
     }).then((result) => {
       if (result.value) {
-        this.http.put("http://localhost:3001/user/952033310V", {
+        this.http.put("http://"+this.bckendIp+":3001/user/952033310V", {
           "password": this.cpspwd
         }).subscribe(data => {
           // console.log(data['_body']);
