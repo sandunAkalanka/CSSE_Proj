@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { ViewselectedjourneyPage } from '../viewselectedjourney/viewselectedjourney';
 
 /**
  * Generated class for the AlljourneysPage page.
@@ -30,15 +31,17 @@ export class AlljourneysPage {
 
   showJourneys() {
     this.httpClient.get('http://' + this.bckendIp + ':3001/journeyhistory/952033310V').subscribe(data => {
-      console.log(data['data']);
+      // console.log(data['data']);
       this.journeyCount = Object.keys(data['data']).length;
       this.journeys = data['data'];
-      console.log(this.journeys);
     });
   }
 
   journeySelected(journey: string) {
     console.log("Selected Item", journey);
+    this.navCtrl.push(ViewselectedjourneyPage,{
+      selJourneyObj: journey
+    });
   }
 
 }

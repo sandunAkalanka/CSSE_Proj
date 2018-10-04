@@ -19,6 +19,7 @@ import { GetoffpointsPage } from '../pages/getoffpoints/getoffpoints';
 import { ProfileViewPage } from '../pages/profile-view/profile-view';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { ChangepassPage } from '../pages/changepass/changepass';
+import { ViewselectedjourneyPage } from '../pages/viewselectedjourney/viewselectedjourney';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ChangepassPage } from '../pages/changepass/changepass';
     GetoffpointsPage,
     ProfileViewPage,
     EditprofilePage,
-    ChangepassPage
+    ChangepassPage,
+    ViewselectedjourneyPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { ChangepassPage } from '../pages/changepass/changepass';
     GetoffpointsPage,
     ProfileViewPage,
     EditprofilePage,
-    ChangepassPage
+    ChangepassPage,
+    ViewselectedjourneyPage
   ],
   providers: [
     StatusBar,

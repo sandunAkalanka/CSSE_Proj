@@ -7,12 +7,47 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>viewselectedjourney</ion-title>
+    <ion-title>Last Journey</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-card>
+    <ion-card-header>
+      <ion-label class="vsjHeading" id='vsjdate'>Date</ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <table class="userDetTab">
+        <tr>
+          <td>Bus Route</td>
+          <td>
+            <ion-label id='vsjbsroute'>Bus Route</ion-label>
+          </td>
+        </tr>
+        <tr>
+          <td>Start</td>
+          <td>
+            <ion-label id='vsjstrt'>Start</ion-label>
+          </td>
+        </tr>
+        <tr>
+          <td>End</td>
+          <td>
+            <ion-label id='vsjend'>End</ion-label>
+          </td>
+        </tr>
+        <tr>
+          <td>Fare (Rs)</td>
+          <td>
+            <ion-label id='vsjfare'>Fare</ion-label>
+          </td>
+        </tr>
+      </table>
+    </ion-card-content>
+  </ion-card>
+  <ion-content>
+    <div #selmap id="selmap"></div>
+  </ion-content>
 </ion-content>
