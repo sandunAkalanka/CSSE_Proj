@@ -38,7 +38,7 @@ export class AlljourneysPage {
   }
 
   journeySelected(journey: string) {
-    console.log("Selected Item", journey);
+    // console.log("Selected Item", journey);
     this.navCtrl.push(ViewselectedjourneyPage,{
       selJourneyObj: journey
     });
