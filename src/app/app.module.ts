@@ -5,7 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { JourneyPage } from '../pages/journey/journey';
+import { journeyHandler } from '../pages/journeyHandler/journeyHandler';
 import { MapPage } from '../pages/map/map';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -27,7 +27,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
     MyApp,
     HomePage,
     ListPage,
-    JourneyPage,
+    journeyHandler,
     MapPage
   ],
   imports: [
@@ -42,7 +42,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
     MyApp,
     HomePage,
     ListPage,
-    JourneyPage,
+    journeyHandler,
     MapPage
   ],
   providers: [

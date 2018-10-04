@@ -36,6 +36,25 @@
           <button ion-button full ion-left class="btn" (click)="mapPage()" style="border-radius: 5px;">Map</button>
       </div>
 
+      <div>
+        <ion-label style="margin-left: 15%;">Ticket count
+            <select class="tktCount" style="margin-left: 10px;width:40px;border-radius: 5px;" [(ngModel)]="quantity"  (change)=ticketCount(quantity) >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            
+        </ion-label>
+        <ion-label style="margin-left: 15%;">Bus Type
+            <select class="tktCount" style="margin-left: 10px;width:60%;border-radius: 5px;" (change)=getBus(bus) [(ngModel)]="bus" >
+                <option value="normalFare">Normal Travelling Bus</option>
+                <option value="longFare">Long Travelling Bus</option>
+            </select>
+        </ion-label>
+      </div> 
+
       <div class="elements">
           <button ion-button full ion-left (click)="getTotal()" class="btn" style="border-radius: 5px;">End Journey</button>
       </div>
@@ -45,32 +64,13 @@
             <ion-label class="stops">Total Amount is : 
                 <ion-label>Calculating</ion-label>
                 <ion-list *ngIf="total">
-                    <ion-label id="amount1">{{total.tot}}</ion-label>
+                    <ion-label id="amount1">{{total}}</ion-label>
                 </ion-list>
             </ion-label>
             
         </div>
         <div>
-            <div>
-                <ion-label style="margin-left: 15%;">Ticket count
-                    <select class="tktCount" style="margin-left: 10px;width:40px;border-radius: 5px;">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    
-                </ion-label>
-                <ion-label style="margin-left: 15%;">Bus Type
-                    <select id="busType" class="tktCount" style="margin-left: 10px;width:60%;border-radius: 5px;">
-                        <option value="normal">Normal Travelling Bus</option>
-                        <option value="long">Long Travelling Bus</option>
-                    </select>
-                    
-                </ion-label>
-                
-            </div> 
+            
 
             <div class="elements">
                 <button ion-button full ion-left class="btn" (click)="postData()" style="border-radius: 5px;font-size: 12px;">Payment</button>

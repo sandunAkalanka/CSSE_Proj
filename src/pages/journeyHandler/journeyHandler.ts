@@ -5,14 +5,17 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { MapPage } from '../map/map';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import { AlertController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-journey',
-  templateUrl: 'journey.html'
+  selector: 'page-journeyHandler',
+  templateUrl: 'journeyHandler.html'
 })
-export class JourneyPage {
+export class journeyHandler {
 
   options:BarcodeScannerOptions;
+  public tickCount=1;
+  public isStart:any;
   public result:any=[];
   public data:any=[];
   public routes:any=[];
@@ -25,17 +28,40 @@ export class JourneyPage {
   createdCode=null;
   scannedCode=null;
 
-  constructor(public navCtrl: NavController,private barcodeScanner: BarcodeScanner, private http: Http,private qrScanner: QRScanner) {
+  constructor(public navCtrl: NavController,private barcodeScanner: BarcodeScanner, private http: Http,private qrScanner: QRScanner,private alertCtrl: AlertController) {
     
   }
 
+  ticketCount($value) {
+    this.tickCount=$value;
+  }
+
+  getBus($value){
+    this.busType=$value;
+  }
+
+
   getTotal(){
-    this.http.get('http://localhost:3001/total/tot/'+this.route+this.busType).pipe(
-            map(res => res.json())
-    ).subscribe(response => {
-           this.total=response.data;
-    });
-    console.log(this.total);
+    if(this.isStart=="true"){
+      this.http.get('http://localhost:3001/total/tot/'+this.route+"/"+this.busType).pipe(
+              map(res => res.json())
+      ).subscribe(response => {
+            this.total=response.data*this.tickCount;
+      });
+      console.log(this.total);
+    }
+    else{
+      let alert = this.alertCtrl.create({
+        title: 'Not started a journey',
+        subTitle: 'Start a journey',
+        buttons: ['Dismiss']
+      });
+      alert.present();
+    }
+  }
+
+  endTour(){
+    
   }
 
   createCode(){
@@ -75,6 +101,7 @@ export class JourneyPage {
   }
 
   getBusRoutes(){
+    this.isStart="true";
     var routNo="177";
     this.http.get('http://localhost:3001/journey/'+routNo).pipe(
             map(res => res.json())
@@ -120,7 +147,18 @@ export class JourneyPage {
   }
 
   mapPage(){
-    this.navCtrl.push(MapPage);
+    if(this.isStart=="true"){
+      this.navCtrl.push(MapPage);
+    }
+    else{
+      let alert = this.alertCtrl.create({
+        title: 'Not started a journey',
+        subTitle: 'Start a journey',
+        buttons: ['Dismiss']
+      });
+      alert.present();
+    }
+    
   }
 
 }
