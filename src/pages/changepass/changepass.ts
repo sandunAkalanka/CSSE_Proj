@@ -18,6 +18,8 @@ import swal from 'sweetalert2';
 export class ChangepassPage {
 
   bckendIp;
+  cpspwd;
+  cpscpwd;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.bckendIp = localStorage.getItem('backendip');
   }

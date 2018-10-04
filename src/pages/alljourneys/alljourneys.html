@@ -17,7 +17,18 @@
   <ion-content>
     <ion-list>
       <button ion-item *ngFor="let journey of journeys" (click)="journeySelected(journey)">
-        {{ journey.Username }}
+        <!-- {{ journey.Username }} -->
+        <ion-card>
+          <ion-card-header>
+            {{ journey.date }}
+          </ion-card-header>
+          <ion-card-content>
+            Bus Route :{{ journey.busRoute }}<br/>
+            Start :{{ journey.start }}<br/>
+            End :{{ journey.end }}<br/>
+            Fare (Rs.) :{{ journey.fare }}
+          </ion-card-content>
+        </ion-card>
       </button>
     </ion-list>
   </ion-content>

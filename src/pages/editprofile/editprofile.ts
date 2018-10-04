@@ -4,8 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-import { Http, RequestOptions } from '@angular/http';
-import { ProfileViewPage } from '../profile-view/profile-view';
+import { Http } from '@angular/http';
 import swal from 'sweetalert2';
 // import { HttpClient } from '@angular/http';
 
@@ -24,6 +23,16 @@ import swal from 'sweetalert2';
 export class EditprofilePage {
   userDetails: Observable<any>;
   bckendIp;
+  efname;
+  elname;
+  enic;
+  ephone;
+  eemail;
+  edob;
+  ecitizen;
+  esecq;
+  esecans;
+  eaddress;
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, public http: Http) {
     this.bckendIp=localStorage.getItem('backendip');
     this.userDetails = this.httpClient.get('http://'+this.bckendIp+':3001/user/952033310V');
