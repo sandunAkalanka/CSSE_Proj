@@ -1,0 +1,37 @@
+<!--
+  Generated template for the PhonePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>phone</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-card-content>
+  <ion-list>
+      <ion-label class= "pin">Phone number</ion-label>
+    <ion-item>
+        <input  type="text" placeholder="Phone number"  id="phone" />
+    </ion-item>
+    <ion-item>
+        <button ion-button (click)="fromPIN()">Get PIN</button>
+    </ion-item>
+    <ion-item>
+        <input  type="password" placeholder="PIN" [(ngModel)]="getpin" />
+    </ion-item>
+    <ion-item>
+      <input  type="password" placeholder="PIN" id="accamount" [(ngModel)]='accamount' />
+  </ion-item>
+    <ion-item>
+      <button ion-button (click)="confirmPayment()" >confirmPayment</button>
+    </ion-item>
+  </ion-list>
+</ion-card-content>
+</ion-content>
