@@ -33,24 +33,25 @@ export class EditprofilePage {
   esecq;
   esecans;
   eaddress;
+  userNIC;
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, public http: Http) {
-    this.bckendIp=localStorage.getItem('backendip');
-    this.userDetails = this.httpClient.get('http://'+this.bckendIp+':3001/user/952033310V');
+    this.bckendIp = localStorage.getItem('backendip');
+    this.userNIC = localStorage.getItem('userNIC');
+    this.userDetails = this.httpClient.get('http://' + this.bckendIp + ':3001/user/'+this.userNIC);
     this.userDetails.subscribe(data => {
-      // console.log('my data: ', data.data[0]);
-      document.getElementById('efullname').innerHTML = data.data[0].fname + ' ' + data.data[0].lname;
-      this.efname = data.data[0].fname;
-      this.elname = data.data[0].lname;
-      this.enic = data.data[0].nic;
-      this.ephone = data.data[0].phone;
-      this.eemail = data.data[0].email;
-      // this.edob = data.data[0].email;
-      this.edob = '1995-07-21';
-      this.ecitizen = data.data[0].email;
-      this.esecq = data.data[0].email;
-      this.esecans = data.data[0].email;
-      this.eaddress = data.data[0].email;
-      // this.eamount = data.data[0].amount;
+      // console.log('my data: ', data);
+      document.getElementById('efullname').innerHTML = data.data.First_Name + ' ' + data.data.Last_Name;
+      this.efname = data.data.First_Name;
+      this.elname = data.data.Last_Name;
+      this.enic = data.data.NIC_Passport_No;
+      this.ephone = data.data.Mobile;
+      this.eemail = data.data.Email_Address;
+      this.edob = data.data.DateOfBirth;
+      this.ecitizen = data.data.citizenship;
+      this.esecq = data.data.Security_Question;
+      this.esecans = data.data.Security_Answer;
+      this.eaddress = data.data.Address;
+      // this.eamount = data.data.amount;
     });
   }
 
@@ -60,14 +61,19 @@ export class EditprofilePage {
 
   saveDetails() {
     let postParams = {
-      "fname": this.efname,
-      "lname": this.elname,
-      "nic": this.enic,
-      "phone": this.ephone,
-      "email": this.eemail
+      "First_Name": this.efname,
+      "Last_Name": this.elname,
+      "NIC_Passport_No": this.enic,
+      "DateOfBirth": this.edob,
+      "citizenship": this.ecitizen,
+      "Security_Question": this.esecq,
+      "Security_Answer": this.esecans,
+      "Email_Address": this.eemail,
+      "Address": this.eaddress,
+      "Mobile": this.ephone,
     }
 
-    this.http.put("http://"+this.bckendIp+":3001/user/952033310V", postParams)
+    this.http.put("http://" + this.bckendIp + ":3001/user/"+this.userNIC, postParams)
       .subscribe(data => {
         // console.log(data['_body']);
         swal({

@@ -48,16 +48,16 @@
         <ion-input type="text" class="centercmps" [(ngModel)]="ecitizen" id="ecitizen"></ion-input>
       </ion-item>
       <ion-item>
+        <ion-label floating>Address</ion-label>
+        <ion-input type="text" class="centercmps" [(ngModel)]="eaddress" id="eaddress"></ion-input>
+      </ion-item>
+      <ion-item>
         <ion-label floating>Security Question</ion-label>
         <ion-input type="text" class="centercmps" [(ngModel)]="esecq" id="esecq"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Security Answer</ion-label>
         <ion-input type="text" class="centercmps" [(ngModel)]="esecans" id="esecans"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Address</ion-label>
-        <ion-input type="text" class="centercmps" [(ngModel)]="eaddress" id="eaddress"></ion-input>
       </ion-item>
       <button (click)="saveDetails()" ion-button round>Save</button>
     </ion-card-content>

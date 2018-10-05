@@ -25,8 +25,10 @@ export class LastjourneyPage {
   strt_lng;
   end_lat;
   end_lng;
+  userNIC;
   constructor(public navCtrl: NavController, public httpClient: HttpClient) {
     this.bckendIp = localStorage.getItem('backendip');
+    this.userNIC = localStorage.getItem('userNIC');
   }
 
   ionViewDidLoad() {
@@ -35,7 +37,7 @@ export class LastjourneyPage {
   }
 
   getDetails() {
-    this.httpClient.get('http://' + this.bckendIp + ':3001/journeyhistory/last/952033310V').subscribe(data => {
+    this.httpClient.get('http://' + this.bckendIp + ':3001/journeyhistory/last/'+this.userNIC).subscribe(data => {
       // console.log(data);
       document.getElementById('uljdate').innerHTML = data['data'].date;
       document.getElementById('uljbsroute').innerHTML = data['data'].busRoute;
@@ -49,11 +51,6 @@ export class LastjourneyPage {
       this.loadMap();
     });
   }
-
-  // <ion-label id='uljbsroute'>Bus Route</ion-label>
-  // <ion-label id='uljstrt'>Start</ion-label>
-  // <ion-label id='uljend'>End</ion-label>
-  // <ion-label id='uljfare'>Fare</ion-label>
 
   loadMap() {
 

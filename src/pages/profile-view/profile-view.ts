@@ -23,8 +23,10 @@ export class ProfileViewPage {
 
   userDetails: Observable<any>;
   bckendIp;
+  userNIC;
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
     this.bckendIp = localStorage.getItem('backendip');
+    this.userNIC = localStorage.getItem('userNIC');
   }
 
   ionViewDidLoad() {
@@ -36,13 +38,18 @@ export class ProfileViewPage {
   }
 
   loadUserDetails(){
-    this.httpClient.get('http://'+this.bckendIp+':3001/user/952033310V').subscribe(data => {
+    this.httpClient.get('http://'+this.bckendIp+':3001/user/'+this.userNIC).subscribe(data => {
       // console.log(data);
-      document.getElementById('vusername').innerHTML = data['data'][0].fname + ' ' + data['data'][0].lname;
-      document.getElementById('vnic').innerHTML = data['data'][0].nic;
-      document.getElementById('vphone').innerHTML = data['data'][0].phone;
-      document.getElementById('vemail').innerHTML = data['data'][0].email;
-      document.getElementById('vamount').innerHTML = data['data'][0].amount;
+      document.getElementById('vusername').innerHTML = data['data'].First_Name + ' ' + data['data'].Last_Name;
+      document.getElementById('vnic').innerHTML = data['data'].NIC_Passport_No;
+      document.getElementById('vphone').innerHTML = data['data'].Mobile;
+      document.getElementById('vemail').innerHTML = data['data'].Email_Address;
+      document.getElementById('vamount').innerHTML = data['data'].Deposit_Amount;
+      document.getElementById('vdob').innerHTML = data['data'].DateOfBirth;
+      document.getElementById('vciti').innerHTML = data['data'].citizenship;
+      document.getElementById('vaddress').innerHTML = data['data'].Address;
+      document.getElementById('vsecques').innerHTML = data['data'].Security_Question;
+      document.getElementById('vsecans').innerHTML = data['data'].Security_Answer;
     });
   }
 

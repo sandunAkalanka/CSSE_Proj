@@ -34,7 +34,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      localStorage.setItem('backendip','192.168.56.1');
+      localStorage.setItem('backendip','192.168.43.187');
     });
   }
 

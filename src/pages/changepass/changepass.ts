@@ -20,8 +20,10 @@ export class ChangepassPage {
   bckendIp;
   cpspwd;
   cpscpwd;
+  userNIC;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.bckendIp = localStorage.getItem('backendip');
+    this.userNIC = localStorage.getItem('userNIC');
   }
 
   ionViewDidLoad() {
@@ -54,8 +56,8 @@ export class ChangepassPage {
       confirmButtonText: 'Yes'
     }).then((result) => {
       if (result.value) {
-        this.http.put("http://"+this.bckendIp+":3001/user/952033310V", {
-          "password": this.cpspwd
+        this.http.put("http://"+this.bckendIp+":3001/user/"+this.userNIC, {
+          "Password": this.cpspwd
         }).subscribe(data => {
           // console.log(data['_body']);
           swal({

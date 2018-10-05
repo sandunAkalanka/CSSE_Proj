@@ -20,8 +20,10 @@ export class AlljourneysPage {
   bckendIp;
   journeyCount;
   journeys;
+  userNIC;
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
     this.bckendIp = localStorage.getItem('backendip');
+    this.userNIC = localStorage.getItem('userNIC');
     this.showJourneys();
   }
 
@@ -30,7 +32,7 @@ export class AlljourneysPage {
   }
 
   showJourneys() {
-    this.httpClient.get('http://' + this.bckendIp + ':3001/journeyhistory/952033310V').subscribe(data => {
+    this.httpClient.get('http://' + this.bckendIp + ':3001/journeyhistory/'+this.userNIC).subscribe(data => {
       // console.log(data['data']);
       this.journeyCount = Object.keys(data['data']).length;
       this.journeys = data['data'];

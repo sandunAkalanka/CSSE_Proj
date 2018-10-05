@@ -26,6 +26,7 @@ export class HistoryPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HistoryPage');
+    localStorage.setItem('userNIC','952033310v');
   }
 
   openProfileView(){
