@@ -40,7 +40,7 @@ export class journeyHandler {
     this.busType=$value;
   }
 
-
+  //Get the total amount. Sends the route and bus type as parameters. In order to get the total amount user has to start a tour.
   getTotal(){
     if(this.isStart=="true"){
       this.http.get('http://localhost:3001/total/tot/'+this.route+"/"+this.busType).pipe(
@@ -64,6 +64,7 @@ export class journeyHandler {
     
   }
 
+  //Create a qr code
   createCode(){
     // this.createdCode=this.qrData;
     this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, this.qrData).then((data)=>{
@@ -73,6 +74,7 @@ export class journeyHandler {
     })
   }
 
+  //Insert tour details to the system
   postData(){
     var headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -100,6 +102,7 @@ export class journeyHandler {
       });
   }
 
+  //Get bus halts for given bus route
   getBusRoutes(){
     this.isStart="true";
     var routNo="177";
@@ -111,6 +114,7 @@ export class journeyHandler {
     });
   }
 
+  //Scan the qr code
   scanCode(){
     // this.barcodeScanner.scan().then(barcodeData=>{
     //   this.scannedCode=barcodeData.text;
@@ -146,6 +150,7 @@ export class journeyHandler {
   .catch((e: any) => console.log('Error is', e));
   }
 
+  //Navigate to the map page
   mapPage(){
     if(this.isStart=="true"){
       this.navCtrl.push(MapPage);
@@ -158,7 +163,6 @@ export class journeyHandler {
       });
       alert.present();
     }
-    
   }
 
 }

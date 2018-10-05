@@ -13,7 +13,7 @@ declare var google;
 })
 export class MapPage {
 
-  @ViewChild('map') MapElement: ElementRef;
+  @ViewChild('map') MapElement;
   map: any;
   data:string="";
   currentMapTrack = null;
@@ -29,7 +29,7 @@ export class MapPage {
 
   ionViewDidLoad(){
     this.plt.ready().then(()=>{
-      this.loadRoutes();
+      this.loadMap();
     })
 
     // let mapOptons={
@@ -49,31 +49,46 @@ export class MapPage {
     // })
   }
 
-  loadRoutes(){
-    // this.storage.get('routes').then(data=>{
-    //   if(data){
-    //     this.previousRoutes=data;
-    //   }
-    // })
-    let options: NativeGeocoderOptions = {
-      useLocale: true,
-      maxResults: 5
-    };
-    this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818, options)
-      .then((result: NativeGeocoderReverseResult[]) => console.log(JSON.stringify(result[0])))
-      .catch((error: any) => console.log(error));
+  // loadRoutes(){
+  //   // this.storage.get('routes').then(data=>{
+  //   //   if(data){
+  //   //     this.previousRoutes=data;
+  //   //   }
+  //   // })
+  //   let options: NativeGeocoderOptions = {
+  //     useLocale: true,
+  //     maxResults: 5
+  //   };
+  //   this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818, options)
+  //     .then((result: NativeGeocoderReverseResult[]) => console.log(JSON.stringify(result[0])))
+  //     .catch((error: any) => console.log(error));
 
-    this.nativeGeocoder.forwardGeocode('Berlin', options)
-      .then((coordinates: NativeGeocoderForwardResult[]) => console.log('The coordinates are latitude=' + coordinates[0].latitude + ' and longitude=' + coordinates[0].longitude))
-      .catch((error: any) => console.log(error));
-  }
-
-  // locate(){
-  //     this.geoLocation.getCurrentPosition().then((res)=>{
-  //       this.data='Lat : '+res.coords.latitude+'<br>'+'Lng'+res.coords.longitude
-  //     }).catch((err)=>{
-  //         console.log("err");
-  //     })
+  //   this.nativeGeocoder.forwardGeocode('Berlin', options)
+  //     .then((coordinates: NativeGeocoderForwardResult[]) => console.log('The coordinates are latitude=' + coordinates[0].latitude + ' and longitude=' + coordinates[0].longitude))
+  //     .catch((error: any) => console.log(error));
   // }
 
+  //Load the map
+  loadMap() {
+    var end_lat=6.908140;
+    var end_lng=79.929552;
+
+    var strt_lat=6.915340;
+    var strt_lng=79.972253;
+    let latLng = new google.maps.LatLng(end_lat, end_lng);
+
+    let mapOptions = {
+      center: latLng,
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+
+    this.map = new google.maps.Map(this.MapElement.nativeElement, mapOptions);
+
+    var startPoint = new google.maps.Marker({ position: new google.maps.LatLng(strt_lat, strt_lng), title: "Start" });
+    startPoint.setMap(this.map);
+    var endPoint = new google.maps.Marker({ position: new google.maps.LatLng(end_lat, end_lng), title: "End" });
+    endPoint.setMap(this.map);
+    console.log("loadmap");
+  }
 }

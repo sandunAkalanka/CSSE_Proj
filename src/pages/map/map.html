@@ -8,13 +8,14 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button full icon-left *ngIf="!isTracking">
+  <!-- <button ion-button full icon-left *ngIf="!isTracking">
     <ion-icon name="locate"></ion-icon>Start Tracking
   </button>
 
-  <button ion-button full icon-left (click)="loadRoutes()">
+  <button ion-button full icon-left (click)="loadMap()">
       <ion-icon name="hand"></ion-icon>Stop Tracking
-  </button>
+  </button> -->
 
-  <div #map></div>
+  <!-- Show the map-->
+  <div #map id="map"></div>
 </ion-content>
