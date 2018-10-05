@@ -11,6 +11,7 @@ import { SignInPage } from '../pages/SignIn/SignIn';
 import { SignUpPage } from '../pages/SignUp/SignUp';
 import { ResetPwdPage } from '../pages/ResetPwd/ResetPwd';
 
+import { HistoryPage } from '../pages/history/history';
 
 @Component({
   templateUrl: 'app.html'
@@ -45,6 +46,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       localStorage.setItem('backendip','localhost');
+      // localStorage.setItem('backendip','192.168.43.187');
     });
   }
 
