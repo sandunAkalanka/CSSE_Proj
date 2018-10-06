@@ -1,5 +1,5 @@
 import { Component,ViewChild, ElementRef } from '@angular/core';
-import { NavController,Platform } from 'ionic-angular';
+import { NavController,Platform,NavParams  } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Subscription } from 'rxjs/Subscription';
 import { Storage } from '@ionic/storage';
@@ -23,8 +23,16 @@ export class MapPage {
   previousRoutes=[]; 
   positionSubscription: Subscription;
 
-  constructor(public navCtrl: NavController,private geoLocation: Geolocation,private plt:Platform,private nativeGeocoder: NativeGeocoder) {
+    end_lat:Number;
+    end_lng:Number;
+    strt_lat:Number;
+    strt_lng:Number;
 
+  constructor(public navCtrl: NavController,public navParams: NavParams,private geoLocation: Geolocation,private plt:Platform,private nativeGeocoder: NativeGeocoder) {
+    this.strt_lat = navParams.get('strt_lat');
+    this.strt_lng = navParams.get('strt_lng');
+    this.end_lat = navParams.get('end_lat');
+    this.end_lng = navParams.get('end_lng');
   }
 
   ionViewDidLoad(){
@@ -70,12 +78,7 @@ export class MapPage {
 
   //Load the map
   loadMap() {
-    var end_lat=6.908140;
-    var end_lng=79.929552;
-
-    var strt_lat=6.915340;
-    var strt_lng=79.972253;
-    let latLng = new google.maps.LatLng(end_lat, end_lng);
+    let latLng = new google.maps.LatLng(this.end_lat, this.end_lng);
 
     let mapOptions = {
       center: latLng,
@@ -85,9 +88,9 @@ export class MapPage {
 
     this.map = new google.maps.Map(this.MapElement.nativeElement, mapOptions);
 
-    var startPoint = new google.maps.Marker({ position: new google.maps.LatLng(strt_lat, strt_lng), title: "Start" });
+    var startPoint = new google.maps.Marker({ position: new google.maps.LatLng(this.strt_lat, this.strt_lng), title: "Start" });
     startPoint.setMap(this.map);
-    var endPoint = new google.maps.Marker({ position: new google.maps.LatLng(end_lat, end_lng), title: "End" });
+    var endPoint = new google.maps.Marker({ position: new google.maps.LatLng(this.end_lat, this.end_lng), title: "End" });
     endPoint.setMap(this.map);
     console.log("loadmap");
   }

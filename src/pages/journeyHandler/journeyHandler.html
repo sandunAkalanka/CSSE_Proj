@@ -23,26 +23,33 @@
 
     <!-- To start a tour. This will open a qr scanner-->
     <div class="elements">
-        <button ion-button full ion-left (click)="getBusRoutes()" class="btn" style="border-radius: 5px;">Start Journey</button>
+        <button ion-button full ion-left (click)="startTour()" class="btn" style="border-radius: 5px;">Start Journey</button>
+    </div>
+
+    <div>
+        <ion-label class="stops" *ngIf="isStart=='true'">On Board
+            <ion-label >Started from {{startLoc}}</ion-label>
+        </ion-label>
     </div>
 
     <!-- Show next bus stops -->
     <div>
-        <ion-label class="stops">Your Next Bus stops are : <br/>
+        <ion-label class="stops" *ngIf="isStart=='true'">Your Next Bus stops are : <br/>
             <ion-list *ngFor="let route of routes">
-                <ion-label id="amount1">{{route.haults[0].busHault}}</ion-label>
+                <ion-label id="amount1">{{text}}</ion-label>
             </ion-list>
+            <!-- <ion-label id="amount1" *ngIf="text!=''">{{text}}</ion-label> -->
         </ion-label>
     </div>
 
     <!-- To open the map-->
-      <div class="elements">
+      <div class="elements" *ngIf="isStart=='true'">
           <button ion-button full ion-left class="btn" (click)="mapPage()" style="border-radius: 5px;">Map</button>
       </div>
 
       <!-- Ticket count. One user can only select upto 5 tickets-->
       <div>
-        <ion-label style="margin-left: 15%;">Ticket count
+        <ion-label style="margin-left: 15%;" *ngIf="isStart=='true'">Ticket count
             <select class="tktCount" style="margin-left: 10px;width:40px;border-radius: 5px;" [(ngModel)]="quantity"  (change)=ticketCount(quantity) >
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -52,7 +59,7 @@
             </select>
         <!-- There are two kinds of buses. User can select one of these -->    
         </ion-label>
-        <ion-label style="margin-left: 15%;">Bus Type
+        <ion-label style="margin-left: 15%;" *ngIf="isStart=='true'">Bus Type
             <select class="tktCount" style="margin-left: 10px;width:60%;border-radius: 5px;" (change)=getBus(bus) [(ngModel)]="bus" >
                 <option value="normalFare">Normal Travelling Bus</option>
                 <option value="longFare">Long Travelling Bus</option>
@@ -61,14 +68,14 @@
       </div> 
 
       <!-- End tour. This will open the qr scanner.-->
-      <div class="elements">
-          <button ion-button full ion-left (click)="getTotal()" class="btn" style="border-radius: 5px;">End Journey</button>
+      <div class="elements" *ngIf="isStart=='true'">
+          <button ion-button full ion-left (click)="endTour()" class="btn" style="border-radius: 5px;">End Journey</button>
       </div>
 
       <!-- Display the total amount-->
         <div>
-            <ion-label class="stops">Total Amount is : 
-                <ion-label>Calculating</ion-label>
+            <ion-label class="stops" *ngIf="isStart=='true'">Total Amount is : 
+                <ion-label *ngIf="total==''">Calculating</ion-label>
                 <ion-list *ngIf="total">
                     <ion-label id="amount1">{{total}}</ion-label>
                 </ion-list>
@@ -78,9 +85,9 @@
         <div>
             
             <!-- PAyment-->
-            <div class="elements">
+            <!-- <div class="elements">
                 <button ion-button full ion-left class="btn" (click)="postData()" style="border-radius: 5px;font-size: 12px;">Payment</button>
-            </div>
+            </div> -->
         </div>
  
 </ion-content>
