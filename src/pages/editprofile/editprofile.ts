@@ -34,12 +34,14 @@ export class EditprofilePage {
   esecans;
   eaddress;
   userNIC;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, public http: Http) {
-    this.bckendIp = localStorage.getItem('backendip');
-    this.userNIC = localStorage.getItem('userNIC');
-    this.userDetails = this.httpClient.get('http://' + this.bckendIp + ':3001/user/'+this.userNIC);
+    this.bckendIp = localStorage.getItem('backendip'); // get the ip address of the backend
+    this.userNIC = localStorage.getItem('userNIC'); // get user's nic from sessions
+    this.userDetails = this.httpClient.get('http://' + this.bckendIp + ':3001/user/'+this.userNIC); // get current user's details from the backend
     this.userDetails.subscribe(data => {
       // console.log('my data: ', data);
+      // Assign data to the elements
       document.getElementById('efullname').innerHTML = data.data.First_Name + ' ' + data.data.Last_Name;
       this.efname = data.data.First_Name;
       this.elname = data.data.Last_Name;
@@ -56,10 +58,11 @@ export class EditprofilePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EditprofilePage');
+    // console.log('ionViewDidLoad EditprofilePage');
   }
 
   saveDetails() {
+    // a json containing the new changes made
     let postParams = {
       "First_Name": this.efname,
       "Last_Name": this.elname,
@@ -73,6 +76,7 @@ export class EditprofilePage {
       "Mobile": this.ephone,
     }
 
+    // sends the data to the backend
     this.http.put("http://" + this.bckendIp + ":3001/user/"+this.userNIC, postParams)
       .subscribe(data => {
         // console.log(data['_body']);

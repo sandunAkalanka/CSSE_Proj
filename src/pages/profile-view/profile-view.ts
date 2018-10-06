@@ -24,13 +24,14 @@ export class ProfileViewPage {
   userDetails: Observable<any>;
   bckendIp;
   userNIC;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
-    this.bckendIp = localStorage.getItem('backendip');
-    this.userNIC = localStorage.getItem('userNIC');
+    this.bckendIp = localStorage.getItem('backendip'); // backend ip
+    this.userNIC = localStorage.getItem('userNIC'); // user's nic
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfileViewPage');
+    // console.log('ionViewDidLoad ProfileViewPage');
   }
 
   ionViewDidEnter() {
@@ -38,8 +39,10 @@ export class ProfileViewPage {
   }
 
   loadUserDetails(){
+    // get logged in user's data from the backend
     this.httpClient.get('http://'+this.bckendIp+':3001/user/'+this.userNIC).subscribe(data => {
       // console.log(data);
+      // assign and display data to the user
       document.getElementById('vusername').innerHTML = data['data'].First_Name + ' ' + data['data'].Last_Name;
       document.getElementById('vnic').innerHTML = data['data'].NIC_Passport_No;
       document.getElementById('vphone').innerHTML = data['data'].Mobile;
@@ -54,15 +57,12 @@ export class ProfileViewPage {
   }
 
   editProfile() {
+    // go to edit profile page
     this.navCtrl.push(EditprofilePage);
-    // swal({
-    //   type: 'success',
-    //   title: 'Success',
-    //   text: 'Your payment was accepted !'
-    // });
   }
 
   changePass(){
+    // go to changepassword page
     this.navCtrl.push(ChangepassPage);
   }
 

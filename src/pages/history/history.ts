@@ -25,27 +25,32 @@ export class HistoryPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HistoryPage');
-    localStorage.setItem('userNIC','952033310v');
+    // console.log('ionViewDidLoad HistoryPage');
+    localStorage.setItem('userNIC','952033310v'); // set nic of user in case sessions fail to load (testing purposes only)
   }
 
   openProfileView(){
+    // go to profile view page
     this.navCtrl.push(ProfileViewPage);
   }
 
   openLastJourney(){
+    // go to last journey page
     this.navCtrl.push(LastjourneyPage);
   }
 
   openAllJourneys(){
+    // go to all journeys page
     this.navCtrl.push(AlljourneysPage);
   }
 
   openGetInPoints(){
+    // go to get in points page
     this.navCtrl.push(GetinpointsPage);
   }
 
   openGetOffPoints(){
+    // go to get off points page
     this.navCtrl.push(GetoffpointsPage);
   }
 
