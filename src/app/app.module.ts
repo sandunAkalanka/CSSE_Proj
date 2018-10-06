@@ -23,6 +23,8 @@ import { GetoffpointsPage } from '../pages/getoffpoints/getoffpoints';
 import { ProfileViewPage } from '../pages/profile-view/profile-view';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { ChangepassPage } from '../pages/changepass/changepass';
+import { FarestatsPage } from '../pages/farestats/farestats';
+
 import { ViewselectedjourneyPage } from '../pages/viewselectedjourney/viewselectedjourney';
 import { journeyHandler } from '../pages/journeyHandler/journeyHandler';
 import { ResetPwdPage } from '../pages/ResetPwd/ResetPwd';
@@ -43,6 +45,7 @@ import { MapPage } from '../pages/map/map';
     ProfileViewPage,
     EditprofilePage,
     ChangepassPage,
+    FarestatsPage,
     ViewselectedjourneyPage,
     journeyHandler,
     ResetPwdPage,
@@ -69,6 +72,7 @@ import { MapPage } from '../pages/map/map';
     ProfileViewPage,
     EditprofilePage,
     ChangepassPage,
+    FarestatsPage,
     ViewselectedjourneyPage,
     journeyHandler,
     ResetPwdPage,

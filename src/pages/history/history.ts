@@ -5,6 +5,7 @@ import { AlljourneysPage } from '../alljourneys/alljourneys';
 import { GetinpointsPage } from '../getinpoints/getinpoints';
 import { GetoffpointsPage } from '../getoffpoints/getoffpoints';
 import { ProfileViewPage } from '../profile-view/profile-view';
+import { FarestatsPage } from '../farestats/farestats';
 
 /**
  * Generated class for the HistoryPage page.
@@ -54,4 +55,8 @@ export class HistoryPage {
     this.navCtrl.push(GetoffpointsPage);
   }
 
+  openFareStats(){
+    // go to fares stats page
+    this.navCtrl.push(FarestatsPage);
+  }
 }
