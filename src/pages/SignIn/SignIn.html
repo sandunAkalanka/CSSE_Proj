@@ -33,19 +33,22 @@
         <ion-checkbox color="dark" checked="true"></ion-checkbox>
       </ion-item>
 
-      <button style=" margin-left: 25%; " ion-button color="primary" (click)=" showConfirm()" type="submit">SignIn</button>
+      <button style=" margin-left: 35%; " ion-button color="primary" (click)=" showConfirm()" type="submit">SignIn</button>
     </ion-list>
 
     <div padding>
       <!-- <button ion-button>SignIn</button>  -->
       <!-- <button style=" margin-left: 25%; " ion-button color="primary" (click)="buttonClicked()" type="submit" >SignIn</button> -->
-      <table>
-        <tr>
-      <td><a href (click)=" forgotPwd()" type="submit">Forgot Password</a></td>
-
-    <td><a href (click)=" Register()" style=" margin-left: 25%; " type="submit">Registration</a></td>
-    </tr>
-    </table>
+      <table style="width: 100%">
+        <tr style="text-align: center">
+          <td>
+            <a (click)=" forgotPwd()">Forgot Password</a>
+          </td>
+          <td>
+            <a (click)=" Register()">Registration</a>
+          </td>
+        </tr>
+      </table>
       <!-- <button ion-button color="primary" (click)=" forgotPwd()" type="submit">Forgot Password</button> -->
       <!-- <button ion-button color="primary" (click)=" Register()" type="submit">New User</button> -->
     </div>

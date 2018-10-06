@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { QRScanner } from '@ionic-native/qr-scanner';
+import { Geolocation } from '@ionic-native/geolocation';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -23,6 +25,10 @@ import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { ChangepassPage } from '../pages/changepass/changepass';
 import { ViewselectedjourneyPage } from '../pages/viewselectedjourney/viewselectedjourney';
 import { journeyHandler } from '../pages/journeyHandler/journeyHandler';
+import { ResetPwdPage } from '../pages/ResetPwd/ResetPwd';
+import { SignInPage } from '../pages/SignIn/SignIn';
+import { SignUpPage } from '../pages/SignUp/SignUp';
+import { MapPage } from '../pages/map/map';
 
 @NgModule({
   declarations: [
@@ -38,15 +44,17 @@ import { journeyHandler } from '../pages/journeyHandler/journeyHandler';
     EditprofilePage,
     ChangepassPage,
     ViewselectedjourneyPage,
-    journeyHandler
+    journeyHandler,
+    ResetPwdPage,
+    SignInPage,
+    SignUpPage,
+    MapPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    HttpClientModule,
-    BarcodeScanner,
-    QRScanner,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,10 +70,18 @@ import { journeyHandler } from '../pages/journeyHandler/journeyHandler';
     EditprofilePage,
     ChangepassPage,
     ViewselectedjourneyPage,
-    journeyHandler
+    journeyHandler,
+    ResetPwdPage,
+    SignInPage,
+    SignUpPage,
+    MapPage
   ],
   providers: [
     StatusBar,
+    BarcodeScanner,
+    QRScanner,
+    Geolocation,
+    NativeGeocoder,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]

@@ -12,6 +12,7 @@ import { SignUpPage } from '../pages/SignUp/SignUp';
 import { ResetPwdPage } from '../pages/ResetPwd/ResetPwd';
 
 import { HistoryPage } from '../pages/history/history';
+import { ProfileViewPage } from '../pages/profile-view/profile-view';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,7 +20,7 @@ import { HistoryPage } from '../pages/history/history';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = journeyHandler;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -29,9 +30,12 @@ export class MyApp {
     // used ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
+      { title: 'Profile', component: ProfileViewPage },
+      // { title: 'List', component: ListPage },
       { title: 'Journey', component: journeyHandler },
-      { title: 'Map', component: MapPage }
+      { title: 'Map', component: MapPage },
+      { title: 'View History', component: HistoryPage },
+
       { title: 'SignIn', component: SignInPage },
       { title: 'SignUp', component: SignUpPage },
       { title: 'ResetPwd', component: ResetPwdPage }

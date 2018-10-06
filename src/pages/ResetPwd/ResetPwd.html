@@ -21,20 +21,20 @@
         <ion-input type="text" [(ngModel)]="rstEmail" placeholder="Email Address*" id="resetemail" style="color: white" class="input" required></ion-input>
       </ion-item>
 
-      <button style=" margin-left: 25%; " ion-button color="primary" (click)=" sendmail()" type="submit">Next</button>
+      <button style=" margin-left: 50%; " ion-button color="primary" (click)=" sendmail()" type="submit">Next</button>
       
       <ion-item id="secques" class="form-group" style="display: 'none'; ">
         <ion-input type="hidden" id="realsecans" name="realsecans" value=""></ion-input>
         <ion-label id='secqst' for="user1" class="label">Security Question :</ion-label>
         <ion-input name="resetemail" [(ngModel)]="rstAns" id="resetemail" type="text" style=" margin-left: -12%;" class="input" placeholder="Answer" required></ion-input>
       </ion-item>
-      <button style=" margin-left: 25%;" ion-button color="primary" (click)=" answered()" type="submit">Next</button>
+      <button style=" margin-left: 50%;" ion-button color="primary" (click)=" answered()" type="submit">Next</button>
 
       <ion-item id="passfields" class="form-group" style="display: 'none'; ">
         <ion-label for="password1"> New Password*</ion-label>
         <ion-input id="newPass" [(ngModel)]="rstPwd" name="newPass" type="password" class="input" data-type="password" required></ion-input>
       </ion-item>
-      <button style=" margin-left: 25%; " ion-button color="primary" (click)=" changepass()" type="submit">Proceed</button>
+      <button style=" margin-left: 50%; " ion-button color="primary" (click)=" changepass()" type="submit">Proceed</button>
 
     </ion-list>
   </div>
