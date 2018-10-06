@@ -4,6 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 // import { HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { QRScanner } from '@ionic-native/qr-scanner';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -20,6 +22,7 @@ import { ProfileViewPage } from '../pages/profile-view/profile-view';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { ChangepassPage } from '../pages/changepass/changepass';
 import { ViewselectedjourneyPage } from '../pages/viewselectedjourney/viewselectedjourney';
+import { journeyHandler } from '../pages/journeyHandler/journeyHandler';
 
 @NgModule({
   declarations: [
@@ -34,13 +37,16 @@ import { ViewselectedjourneyPage } from '../pages/viewselectedjourney/viewselect
     ProfileViewPage,
     EditprofilePage,
     ChangepassPage,
-    ViewselectedjourneyPage
+    ViewselectedjourneyPage,
+    journeyHandler
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    BarcodeScanner,
+    QRScanner,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,12 +61,13 @@ import { ViewselectedjourneyPage } from '../pages/viewselectedjourney/viewselect
     ProfileViewPage,
     EditprofilePage,
     ChangepassPage,
-    ViewselectedjourneyPage
+    ViewselectedjourneyPage,
+    journeyHandler
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

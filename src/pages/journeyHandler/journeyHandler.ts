@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { MapPage } from '../map/map';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { AlertController } from 'ionic-angular';
 
 @Component({
