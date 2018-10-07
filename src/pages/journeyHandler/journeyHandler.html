@@ -57,8 +57,9 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-        <!-- There are two kinds of buses. User can select one of these -->    
+        
         </ion-label>
+        <!-- There are two kinds of buses. User can select one of these -->    
         <ion-label style="margin-left: 15%;" *ngIf="isStart=='true'">Bus Type
             <select class="tktCount" style="margin-left: 10px;width:60%;border-radius: 5px;" (change)=getBus(bus) [(ngModel)]="bus" >
                 <option value="normalFare">Normal Travelling Bus</option>

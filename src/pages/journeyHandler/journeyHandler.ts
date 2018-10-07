@@ -48,7 +48,7 @@ export class journeyHandler {
 
   //-----------Get balance by Minila---------------
   ionViewDidLoad(){
-    var link = 'http://localhost:3004/Account/123';
+    var link = 'http://localhost:3001/Account/123';
     // this.http.get(link).subscribe(function (response) {
     //   console.log(response);
     //   this.accbalance=response['data'][0].Account;
@@ -83,23 +83,8 @@ export class journeyHandler {
         });
     }
     balance(){
-      if(this.accbalance >this.total){
-          this.accbalance=this.accbalance-this.total;
-      }
-      else if(this.accbalance=this.total){
-        this.accbalance=0;
-      }
-      else if(this.accbalance<this.total){
-        this.accbalance=this.accbalance-this.total;
-        if(this.accbalance<(-50)){
-            this.accbalance;
-        }
-        else{
-          // got to rechage page
-        }
-      }
-
-  }
+      this.accbalance=this.accbalance-this.total;
+    }
     //-----------Get balance by Minila---------------
 
   //Start Journey button click event
@@ -223,9 +208,8 @@ export class journeyHandler {
       end: this.endLoc,
       endLat: this.end_lat,
       endLong: this.end_lng,
-      fare: this.total
-      // date: "2018/09/09",
-      
+      fare: this.total,
+      date: "1996/09/09"
     }
     
     this.http.post("http://localhost:3001/journey/", postParams, options)
@@ -252,6 +236,7 @@ export class journeyHandler {
               this.startLoc=this.routes[0].haults[i].busHault;
               this.end_lat=this.routes[0].endLat;
               this.end_lng=this.routes[0].endLong;
+              console.log(this.startLoc);
             }
           }
           for(i=j;i<this.routes[0].haults.length;i++){
@@ -277,7 +262,7 @@ export class journeyHandler {
               }
         }
       }
-  });
+    });
   }
   opens(){
    
