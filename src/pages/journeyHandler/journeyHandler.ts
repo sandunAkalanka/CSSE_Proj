@@ -12,6 +12,7 @@ import { AlertController } from 'ionic-angular';
 })
 export class journeyHandler {
   public Username;
+  public NIC;
   public accbalance=100;
   public startLoc='';
   public startLat:any;
@@ -46,6 +47,7 @@ export class journeyHandler {
     localStorage.setItem('userFName','Viraj Gunathilaka');
     this.Username=localStorage.getItem('userFName');
     this.bckendIp = localStorage.getItem('backendip'); // get ip of backend
+    this.NIC=localStorage.getItem('userNIC');
   }
 
   //-----------Get balance by Minila---------------
@@ -84,7 +86,10 @@ export class journeyHandler {
          }, error => {
           console.log(error);// Error getting the data
         });
-        this.http.post("http://localhost:3001/payment/", postParams1, options)//get bal and get journeyhandle
+        let postParams2={
+          accbalance: this.accbalance
+        }
+        this.http.put("http://localhost:3001/customer/"+this.NIC, postParams2, options)//get bal and get journeyhandle
         .subscribe(data => {
           console.log(data['_body']);
          }, error => {
@@ -146,7 +151,7 @@ export class journeyHandler {
 
   //End Journey button click event
   endTour(){
-    this.endLoc="Kollupitiya";
+    
     this.scanCode();
     this.getBusTypeFare();
     this.getTotal();
@@ -179,8 +184,13 @@ export class journeyHandler {
       this.http.get('http://'+this.bckendIp+':3001/total/route/'+this.busType).pipe(
           map(res => res.json())
       ).subscribe(response => {
-            this.fare=response.data.normalFare;
-            console.log(this.fare);
+        if(this.busType=='normalFare'){
+          this.fare=response.data.normalFare;
+        }
+        else{
+          this.fare=response.data.longFare;
+        }
+        console.log(this.fare);
       });
     }
     else{
@@ -276,9 +286,6 @@ export class journeyHandler {
       }
     });
   }
-  opens(){
-   
-  }
 
   //Scan the qr code
   scanCode(){
@@ -311,7 +318,7 @@ export class journeyHandler {
     this.end_lat=23;
     this.end_lng=45;
     // this.endLoc="Kollupitiya";
-    this.route="177";
+    this.route="177 Kaduwela-Kollupitiya";
   }
 
 }
