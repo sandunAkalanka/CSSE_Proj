@@ -1,0 +1,51 @@
+<!--
+  Generated template for the CardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Card Recharging</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card-content>
+    <ion-list>
+      <ion-item>
+        <input type="text" placeholder="Enter your card number" id="id" />
+      </ion-item>
+      <ion-item>
+        <input type="text" placeholder="Enter Card Holder's Name" id="name" />
+      </ion-item>
+      <ion-item>
+        <input type="text" placeholder="Enter CVC Number in the back of the card" id="num" />
+      </ion-item>
+      <ion-item>
+        <input type="text" placeholder="Enter the expiry data MM/YY" id="exdate" />
+      </ion-item>
+      <ion-item>
+        <input type="number" placeholder="deposite amount" [(ngModel)]="accamount" />
+      </ion-item>
+      <ion-item>
+        <input type="text" placeholder="Phone number" id="phone" />
+      </ion-item>
+      <ion-item>
+        <button ion-button (click)="fromPIN()">Get PIN</button>
+      </ion-item>
+      <ion-item>
+        <input type="password" placeholder="PIN" [(ngModel)]="getpin" />
+      </ion-item>
+      <ion-item>
+        <button ion-button (click)="confirmPayment()">confirmPayment</button>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-content>

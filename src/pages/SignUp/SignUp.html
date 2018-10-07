@@ -1,0 +1,115 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>SignUp Form</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="margin-top: 30px;" padding>
+  <!-- <h3>Ionic Menu Starter</h3>
+  
+    <p>
+      If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
+    </p>
+  
+    <button ion-button secondary menuToggle class="abc">Toggle Menu</button> -->
+
+  <div class='cde'>
+    <ion-list class='cde'>
+      <ion-label style="color:rgb(14, 6, 134); margin-left: 30%; font-weight: bold; font-size: 30px;" stacked>SignUp</ion-label>
+      <br/>
+      <img class='img' src="../../assets/imgs/pc.jpg"/>
+      <br/>
+      <ion-label style="color:purple; padding: 5%; font-weight: bold; font-size: 20px;" stacked>Personal Information</ion-label>
+     
+      <!-- here is the registration form components -->
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>First Name*</ion-label>
+        <ion-input type="text" [(ngModel)]="fName" placeholder="First Name"></ion-input>
+      </ion-item>
+
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>Last Name*</ion-label>
+        <ion-input type="text" [(ngModel)]="lName" placeholder="Last Name"></ion-input>
+      </ion-item>
+
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>NIC / Passport_No*</ion-label>
+        <ion-input type="text" [(ngModel)]="nic" placeholder="NIC / Passport No"></ion-input>
+      </ion-item>
+
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>Date Of Birth</ion-label>
+        <ion-input type="Date" [(ngModel)]="dob" placeholder="Date Of Birth"></ion-input>
+      </ion-item>
+
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>Citizenship*</ion-label>
+        <ion-input type="text" [(ngModel)]="citizenship" placeholder="Citizenship"></ion-input>
+      </ion-item>
+
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>Deposit Amount*</ion-label>
+        <ion-input type="text" [(ngModel)]="amount" placeholder="Deposit Amount"></ion-input>
+      </ion-item>
+
+      <ion-label style="color:purple; padding: 5%; font-weight: bold; font-size: 20px;" stacked>Account Information</ion-label>
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>Username*</ion-label>
+        <ion-input type="text" [(ngModel)]="username" placeholder="Username"></ion-input>
+      </ion-item>
+
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>Email Address*</ion-label>
+        <ion-input type="email" [(ngModel)]="email" placeholder="Email Address"></ion-input>
+      </ion-item>
+
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>Password*</ion-label>
+        <ion-input type="password" [(ngModel)]="pwd1" placeholder="Password"></ion-input>
+      </ion-item>
+
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>Re-Type Password*</ion-label>
+        <ion-input type="password" [(ngModel)]="pwd2" placeholder="Re-TypePassword"></ion-input>
+      </ion-item>
+
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>Security Question*</ion-label>
+        <ion-input type="text" [(ngModel)]="secQues" placeholder="Security_Question"></ion-input>
+      </ion-item>
+
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>Security Answer*</ion-label>
+        <ion-input type="text" [(ngModel)]="secAns" placeholder="Security_Answer"></ion-input>
+      </ion-item>
+
+      <ion-label style="color:purple; padding: 5%; font-weight: bold; font-size: 20px;" stacked>Contact Information</ion-label>
+
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>Address</ion-label>
+        <ion-input type="text" [(ngModel)]="address" placeholder="Address"></ion-input>
+      </ion-item>
+
+      <ion-item class='form'>
+        <ion-label style="color: blue;" stacked>Mobile*</ion-label>
+        <ion-input type="text" [(ngModel)]="mobile" placeholder="Mobile"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <div padding>
+      <!-- By clicking this button it will submit the form -->
+      <button style=" margin-left: 25%; " ion-button color="primary" (click)=" showConfirm()" type="submit">SignUp</button>
+      <br/>
+      <p>
+         <!-- To login to the system u may need to click this link
+         It will pop up the Login window -->
+        <a (click)=" login()"  >Already a Member? SignIn...</a>
+      </p>
+    </div>
+  </div>
+</ion-content>

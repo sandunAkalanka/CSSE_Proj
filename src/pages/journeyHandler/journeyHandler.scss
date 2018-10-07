@@ -1,0 +1,38 @@
+page-journeyHandler{
+    .btn{
+        width:70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .Btmbtn{
+        width:20%;
+    }
+    .user{
+        text-align: center;
+        font-size: 15px;
+    }
+    .stops{
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 3%;
+        background-color: silver; 
+        border-radius: 5px;
+    }
+    .combo{
+        width: 73%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: lightseagreen;
+    }
+    .elements{
+        padding: 5px;
+    }
+    .line{
+        display: inline;
+        
+    }
+    .amount{
+        background-color: lightblue;
+        width: 40%; 
+    }
+}

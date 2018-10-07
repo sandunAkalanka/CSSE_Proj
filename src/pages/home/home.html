@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Tickets HUB</ion-title>
+    Powered by int Elegance
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <!-- <div class="home1d"></div> -->
+    <table style="width: 100%">
+      <tr>
+        <th style="width: 40%"></th>
+        <th style="width: 60%"></th>
+      </tr>
+      <tr>
+        <td>
+          <a (click)="goToProfileView()">
+            <img src="../../assets//imgs/profile.png">
+          </a>
+        </td>
+        <td>
+          <h2>Profile View</h2>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a (click)="goToPayments()">
+            <img src="../../assets//imgs/reload.png">
+          </a>
+        </td>
+        <td>
+          <h2>Reload</h2>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a (click)="startJourney()">
+            <img src="../../assets//imgs/journey.png">
+          </a>
+        </td>
+        <td>
+          <h2>Start Journey</h2>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a (click)="viewHistory()">
+            <img src="../../assets//imgs/history.png">
+          </a>
+        </td>
+        <td>
+          <h2>View History</h2>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a (click)="signout()">
+            <img src="../../assets//imgs/signout.png">
+          </a>
+        </td>
+        <td>
+          <h2>Sign Out</h2>
+        </td>
+      </tr>
+    </table>
+  </div>
+</ion-content>

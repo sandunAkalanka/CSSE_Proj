@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>SignIn Form</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="margin-top: 75px;" padding>
+  <!-- <h3>Ionic Menu Starter</h3>
+  
+    <p>
+      If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
+    </p>
+  
+    <button ion-button secondary menuToggle class="abc">Toggle Menu</button> -->
+
+  <div class='abc'>
+    <ion-list class='abc'>
+   
+      <ion-label style="color:rgb(14, 6, 134); margin-left: 30%; font-weight: bold; font-size: 30px;" stacked>Sign In</ion-label>
+      <br/>
+      <img class='img' src="../../assets/imgs/th.jpg"/>
+      <br/>
+      <ion-item class='abc'>
+        <ion-input type="text" [(ngModel)]="loginUName" placeholder="Username*" style="color: white"></ion-input>
+      </ion-item>
+
+      <ion-item class='abc'>
+        <ion-input type="password" [(ngModel)]="loginPwd" placeholder="Password*" style="color: white"></ion-input>
+      </ion-item>
+
+      <ion-item class='abc'>
+        <ion-label>Remember Me. </ion-label>
+        <ion-checkbox color="dark" checked="true"></ion-checkbox>
+      </ion-item>
+
+      <button style=" margin-left: 35%; " ion-button color="primary" (click)=" showConfirm()" type="submit">SignIn</button>
+    </ion-list>
+
+    <div padding>
+      <!-- <button ion-button>SignIn</button>  -->
+      <!-- <button style=" margin-left: 25%; " ion-button color="primary" (click)="buttonClicked()" type="submit" >SignIn</button> -->
+      <table style="width: 100%">
+        <tr style="text-align: center">
+          <td>
+            <a (click)=" forgotPwd()">Forgot Password</a>
+          </td>
+          <td>
+            <a (click)=" Register()">Registration</a>
+          </td>
+        </tr>
+      </table>
+      <!-- <button ion-button color="primary" (click)=" forgotPwd()" type="submit">Forgot Password</button> -->
+      <!-- <button ion-button color="primary" (click)=" Register()" type="submit">New User</button> -->
+    </div>
+  </div>
+</ion-content>
