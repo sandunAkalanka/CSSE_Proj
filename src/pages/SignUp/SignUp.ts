@@ -33,6 +33,18 @@ export class SignUpPage {
     this.bckendIp = localStorage.getItem('backendip');
   }
 
+  ionViewLoad(){
+   
+    console.log("test1");
+    console.log('ionViewLoad SignUpPage ');
+    var link ='http://localhost:3001/user/123';
+    this.http.get(link).subscribe(function(response){
+      console.log(response);
+      //this.
+
+    })
+  }
+
   showConfirm() {
     if (this.pwd1 == this.pwd2) {
       this.registerUser();

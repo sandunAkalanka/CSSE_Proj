@@ -1,3 +1,4 @@
+
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -20,6 +21,8 @@
     <ion-list class='cde'>
       <ion-label style="color:rgb(14, 6, 134); margin-left: 30%; font-weight: bold; font-size: 30px;" stacked>SignUp</ion-label>
       <ion-label style="color:purple; padding: 5%; font-weight: bold; font-size: 20px;" stacked>Personal Information</ion-label>
+     
+      <!-- here is the registration form components -->
       <ion-item class='form'>
         <ion-label style="color: blue;" stacked>First Name*</ion-label>
         <ion-input type="text" [(ngModel)]="fName" placeholder="First Name"></ion-input>
@@ -96,11 +99,13 @@
     </ion-list>
 
     <div padding>
-
+      <!-- By clicking this button it will submit the form -->
       <button style=" margin-left: 25%; " ion-button color="primary" (click)=" showConfirm()" type="submit">SignUp</button>
       <br/>
       <p>
-        <a href (click)=" login()"  >Already a Member? SignIn...</a>
+         <!-- To login to the system u may need to click this link
+         It will pop up the Login window -->
+        <a (click)=" login()"  >Already a Member? SignIn...</a>
       </p>
     </div>
   </div>
