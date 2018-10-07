@@ -6,6 +6,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { MapPage } from '../map/map';
 import { AlertController } from 'ionic-angular';
+import { PayHome } from '../payhome/payhome';
 @Component({
   selector: 'page-journeyHandler',
   templateUrl: 'journeyHandler.html'
@@ -43,6 +44,7 @@ export class journeyHandler {
   scannedCode=null;
   bckendIp;
 
+  //constructor
   constructor(public navCtrl: NavController,private barcodeScanner: BarcodeScanner,private qrScanner:QRScanner, private http: Http,private alertCtrl: AlertController) {
     localStorage.setItem('userFName','Viraj Gunathilaka');
     this.Username=localStorage.getItem('userFName');
@@ -52,7 +54,7 @@ export class journeyHandler {
 
   //-----------Get balance by Minila---------------
   ionViewDidLoad(){
-    var link = 'http://'+this.bckendIp+':3004/Account/123';
+    var link = 'http://'+this.bckendIp+':3001/'+this.NIC;
     
     // this.http.get(link).subscribe(function (response) {
     //   console.log(response);
@@ -87,7 +89,7 @@ export class journeyHandler {
           console.log(error);// Error getting the data
         });
         let postParams2={
-          accbalance: this.accbalance
+          Deposit_Amount: this.accbalance
         }
         this.http.put("http://localhost:3001/customer/"+this.NIC, postParams2, options)//get bal and get journeyhandle
         .subscribe(data => {
@@ -118,6 +120,7 @@ export class journeyHandler {
         buttons: ['Dismiss']
       });
       alert.present();
+      this.navCtrl.push(PayHome);
     }
   }
 
