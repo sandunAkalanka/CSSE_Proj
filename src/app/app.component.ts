@@ -33,7 +33,6 @@ export class MyApp {
       { title: 'Profile', component: ProfileViewPage },
       { title: 'Reload', component: PayHomePage },
       { title: 'Journey', component: journeyHandler },
-      { title: 'Map', component: MapPage },
       { title: 'View History', component: HistoryPage }
     ];
     // this.pages = [
