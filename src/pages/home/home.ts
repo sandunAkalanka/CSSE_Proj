@@ -4,6 +4,7 @@ import { ProfileViewPage } from '../profile-view/profile-view';
 import { journeyHandler } from '../journeyHandler/journeyHandler';
 import { HistoryPage } from '../history/history';
 import { SignInPage } from '../SignIn/SignIn';
+import { PayHomePage } from '../payhome/home';
 
 @Component({
   selector: 'page-home',
@@ -20,7 +21,7 @@ export class HomePage {
   }
 
   goToPayments() {
-    this.navCtrl.setRoot(ProfileViewPage);
+    this.navCtrl.setRoot(PayHomePage);
   }
 
   startJourney() {

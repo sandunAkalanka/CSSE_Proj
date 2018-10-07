@@ -8,6 +8,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { QRScanner } from '@ionic-native/qr-scanner';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
+import { TaskProvider } from '../providers/task/task';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -31,6 +32,9 @@ import { ResetPwdPage } from '../pages/ResetPwd/ResetPwd';
 import { SignInPage } from '../pages/SignIn/SignIn';
 import { SignUpPage } from '../pages/SignUp/SignUp';
 import { MapPage } from '../pages/map/map';
+import { PayHomePage } from '../pages/payhome/home';
+import { CardPage } from '../pages/card/card';
+import { PhonePage } from '../pages/phone/phone';
 
 @NgModule({
   declarations: [
@@ -51,7 +55,10 @@ import { MapPage } from '../pages/map/map';
     ResetPwdPage,
     SignInPage,
     SignUpPage,
-    MapPage
+    MapPage,
+    PayHomePage,
+    CardPage,
+    PhonePage
   ],
   imports: [
     BrowserModule,
@@ -78,7 +85,10 @@ import { MapPage } from '../pages/map/map';
     ResetPwdPage,
     SignInPage,
     SignUpPage,
-    MapPage
+    MapPage,
+    PayHomePage,
+    CardPage,
+    PhonePage
   ],
   providers: [
     StatusBar,
@@ -87,6 +97,7 @@ import { MapPage } from '../pages/map/map';
     Geolocation,
     NativeGeocoder,
     SplashScreen,
+    TaskProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

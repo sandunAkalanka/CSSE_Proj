@@ -8,7 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { journeyHandler } from '../pages/journeyHandler/journeyHandler';
 import { MapPage } from '../pages/map/map';
 import { SignInPage } from '../pages/SignIn/SignIn';
-import { SignUpPage } from '../pages/SignUp/SignUp';
+import { PayHomePage } from '../pages/payhome/home';
 import { ResetPwdPage } from '../pages/ResetPwd/ResetPwd';
 
 import { HistoryPage } from '../pages/history/history';
@@ -31,7 +31,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Profile', component: ProfileViewPage },
-      // { title: 'Reload', component: ListPage },
+      { title: 'Reload', component: PayHomePage },
       { title: 'Journey', component: journeyHandler },
       { title: 'Map', component: MapPage },
       { title: 'View History', component: HistoryPage }
@@ -58,7 +58,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       localStorage.setItem('backendip','localhost');
-      // localStorage.setItem('backendip','192.168.43.187');
+      // localStorage.setItem('backendip','192.168.137.1');
     });
   }
 
