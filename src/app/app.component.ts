@@ -20,7 +20,7 @@ import { ProfileViewPage } from '../pages/profile-view/profile-view';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = SignInPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -50,7 +50,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       // localStorage.setItem('backendip','localhost');
-      localStorage.setItem('backendip','192.168.1.102');
+      localStorage.setItem('backendip','192.168.43.187');
     });
   }
 

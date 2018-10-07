@@ -37,7 +37,7 @@ export class SignUpPage {
    
     console.log("test1");
     console.log('ionViewLoad SignUpPage ');
-    var link ='http://localhost:3001/user/123';
+    var link ='http://'+this.bckendIp+':3001/user/123';
     this.http.get(link).subscribe(function(response){
       console.log(response);
       //this.

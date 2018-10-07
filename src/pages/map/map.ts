@@ -27,12 +27,14 @@ export class MapPage {
     end_lng:Number;
     strt_lat:Number;
     strt_lng:Number;
+    bckendIp;
 
   constructor(public navCtrl: NavController,public navParams: NavParams,private geoLocation: Geolocation,private plt:Platform,private nativeGeocoder: NativeGeocoder) {
     this.strt_lat = navParams.get('strt_lat');
     this.strt_lng = navParams.get('strt_lng');
     this.end_lat = navParams.get('end_lat');
     this.end_lng = navParams.get('end_lng');
+    this.bckendIp = localStorage.getItem('backendip'); // get ip of backend
   }
 
   ionViewDidLoad(){

@@ -27,7 +27,7 @@ export class HistoryPage {
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad HistoryPage');
-    localStorage.setItem('userNIC','952033310v'); // set nic of user in case sessions fail to load (testing purposes only)
+    // localStorage.setItem('userNIC','952033310v'); // set nic of user in case sessions fail to load (testing purposes only)
   }
 
   openProfileView(){
