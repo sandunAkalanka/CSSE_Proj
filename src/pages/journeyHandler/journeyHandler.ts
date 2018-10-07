@@ -11,6 +11,7 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'journeyHandler.html'
 })
 export class journeyHandler {
+  public Username;
   public accbalance=100;
   public startLoc='';
   public startLat:any;
@@ -41,8 +42,65 @@ export class journeyHandler {
   scannedCode=null;
 
   constructor(public navCtrl: NavController,private barcodeScanner: BarcodeScanner,private qrScanner:QRScanner, private http: Http,private alertCtrl: AlertController) {
-    
+    localStorage.setItem('userFName','Viraj Gunathilaka');
+    this.Username=localStorage.getItem('userFName');
   }
+
+  //-----------Get balance by Minila---------------
+  ionViewDidLoad(){
+    var link = 'http://localhost:3004/Account/123';
+    // this.http.get(link).subscribe(function (response) {
+    //   console.log(response);
+    //   this.accbalance=response['data'][0].Account;
+    //   //cant get derectly amount that why
+    //   localStorage.setItem('amount',this.bal);//accountbalance*
+    // });
+    this.http.get(link).pipe(
+      map(res => res.json())
+    ).subscribe(response => {
+          this.accbalance=response['data'][0].Account;
+          console.log(this.accbalance);
+    });
+  }
+  addPayment(){
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+
+    let postParams1={
+      Username: this.Username,
+      busRoute: this.route,
+      start: this.startLoc,
+      end: this.endLoc,
+      amount: this.total
+    }
+    this.http.post("http://localhost:3001/payment/", postParams1, options)//get bal and get journeyhandle
+        .subscribe(data => {
+          console.log(data['_body']);
+         }, error => {
+          console.log(error);// Error getting the data
+        });
+    }
+    balance(){
+      if(this.accbalance >this.total){
+          this.accbalance=this.accbalance-this.total;
+      }
+      else if(this.accbalance=this.total){
+        this.accbalance=0;
+      }
+      else if(this.accbalance<this.total){
+        this.accbalance=this.accbalance-this.total;
+        if(this.accbalance<(-50)){
+            this.accbalance;
+        }
+        else{
+          // got to rechage page
+        }
+      }
+
+  }
+    //-----------Get balance by Minila---------------
 
   //Start Journey button click event
   startTour(){
@@ -157,7 +215,7 @@ export class journeyHandler {
     let options = new RequestOptions({ headers: headers });
  
     let postParams = {
-      Username: "Viraj Gunathilaka",
+      Username: this.Username,
       busRoute: this.route,
       start: this.startLoc,
       startLat: this.strt_lat,
@@ -192,6 +250,8 @@ export class journeyHandler {
             if(this.strt_lat==this.routes[0].haults[i].latitude && this.strt_lng==this.routes[0].haults[i].longtitude){
               j=i+1;
               this.startLoc=this.routes[0].haults[i].busHault;
+              this.end_lat=this.routes[0].endLat;
+              this.end_lng=this.routes[0].endLong;
             }
           }
           for(i=j;i<this.routes[0].haults.length;i++){
@@ -212,9 +272,9 @@ export class journeyHandler {
         if(this.strt_lat==this.routes[0].haults.latitude && this.strt_lng==this.routes[0].haults.longtitude){
               var j;
               for(j=i;j<this.routes[0].haults.length;i++){
+                this.endLoc=this.routes[0].end;
                 this.endHaltNo++;
               }
-              break;
         }
       }
   });
