@@ -31,15 +31,23 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Profile', component: ProfileViewPage },
-      // { title: 'List', component: ListPage },
+      // { title: 'Reload', component: ListPage },
       { title: 'Journey', component: journeyHandler },
       { title: 'Map', component: MapPage },
-      { title: 'View History', component: HistoryPage },
-
-      { title: 'SignIn', component: SignInPage },
-      { title: 'SignUp', component: SignUpPage },
-      { title: 'ResetPwd', component: ResetPwdPage }
+      { title: 'View History', component: HistoryPage }
     ];
+    // this.pages = [
+    //   { title: 'Home', component: HomePage },
+    //   { title: 'Profile', component: ProfileViewPage },
+    //   // { title: 'List', component: ListPage },
+    //   { title: 'Journey', component: journeyHandler },
+    //   { title: 'Map', component: MapPage },
+    //   { title: 'View History', component: HistoryPage },
+
+    //   { title: 'SignIn', component: SignInPage },
+    //   { title: 'SignUp', component: SignUpPage },
+    //   { title: 'ResetPwd', component: ResetPwdPage }
+    // ];
 
   }
 
@@ -49,8 +57,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      // localStorage.setItem('backendip','localhost');
-      localStorage.setItem('backendip','192.168.43.187');
+      localStorage.setItem('backendip','localhost');
+      // localStorage.setItem('backendip','192.168.43.187');
     });
   }
 
