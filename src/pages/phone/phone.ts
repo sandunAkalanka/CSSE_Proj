@@ -25,14 +25,18 @@ export class PhonePage {
   savepin;
   bal;
   accamount;
+  bckendIp;
+  userNIC;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public taskprovider: TaskProvider, public http: HttpClient) {
     this.Taskid = this.navParams.get('id');
-
+    this.bckendIp = localStorage.getItem('backendip'); // get ip of backend
+    this.userNIC = localStorage.getItem('userNIC'); // get user nic from sessions
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PhonePage');
-    var link = 'http://localhost:3004/Account/123';
+    var link = 'http://'+this.bckendIp+':3001/customer/'+this.userNIC;
     this.http.get(link).subscribe(function (response) {
       console.log(response);
       this.bal=response['data'][0].Account;
@@ -68,7 +72,7 @@ export class PhonePage {
 
 
   fromPIN() {
-    var link = 'http://localhost:5002/mobilePayment/' + document.getElementById("phone").nodeValue;
+    var link = 'http://'+this.bckendIp+':5002/mobilePayment/' + document.getElementById("phone").nodeValue;
     ////console.log("workkkkkkkkkkkkkkkkkkkkkkk");
     this.http.get(link).subscribe(function (response) {
       console.log(response);
@@ -91,7 +95,7 @@ export class PhonePage {
       console.log(this.accamount);
       console.log(parseInt(localStorage.getItem('amount'),10) + parseInt(this.accamount));
       // console.log(this.bal);
-      var link = 'http://localhost:3004/Account/123' ;
+      var link = 'http://'+this.bckendIp+':3001/customer/'+this.userNIC ;
       this.http.put(link,{
       
         Account:(parseInt(localStorage.getItem('amount'),10) + parseInt(this.accamount))

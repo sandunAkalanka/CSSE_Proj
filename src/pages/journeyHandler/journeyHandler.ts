@@ -52,7 +52,7 @@ export class journeyHandler {
 
   //-----------Get balance by Minila---------------
   ionViewDidLoad(){
-    var link = 'http://'+this.bckendIp+':3004/Account/123';
+    var link = 'http://'+this.bckendIp+':3001/customer/'+this.NIC;
     
     // this.http.get(link).subscribe(function (response) {
     //   console.log(response);
@@ -63,8 +63,9 @@ export class journeyHandler {
     this.http.get(link).pipe(
       map(res => res.json())
     ).subscribe(response => {
-          this.accbalance=response['data'][0].Account;
+          this.accbalance=response['data'][0].Deposit_Amount;
           console.log(this.accbalance);
+          // console.log(response);
     });
   }
   addPayment(){
@@ -80,7 +81,7 @@ export class journeyHandler {
       end: this.endLoc,
       amount: this.total
     }
-    this.http.post("http://localhost:3001/payment/", postParams1, options)//get bal and get journeyhandle
+    this.http.post("http://"+this.bckendIp+":3001/payment/", postParams1, options)//get bal and get journeyhandle
         .subscribe(data => {
           console.log(data['_body']);
          }, error => {
@@ -89,7 +90,7 @@ export class journeyHandler {
         let postParams2={
           accbalance: this.accbalance
         }
-        this.http.put("http://localhost:3001/customer/"+this.NIC, postParams2, options)//get bal and get journeyhandle
+        this.http.put("http://"+this.bckendIp+":3001/customer/"+this.NIC, postParams2, options)//get bal and get journeyhandle
         .subscribe(data => {
           console.log(data['_body']);
          }, error => {
@@ -233,7 +234,7 @@ export class journeyHandler {
       date: "1996/09/09"
     }
     
-    this.http.post("http://'+this.bckendIp+':3001/journey/", postParams, options)
+    this.http.post("http://"+this.bckendIp+":3001/journey/", postParams, options)
       .subscribe(data => {
         console.log(data['_body']);
        }, error => {

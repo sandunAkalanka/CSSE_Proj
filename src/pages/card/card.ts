@@ -20,22 +20,27 @@ export class CardPage {
   bal;
   amount;
   savepin;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http:HttpClient) {
+  bckendIp;
+  userNIC;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
+    this.bckendIp = localStorage.getItem('backendip'); // get ip of backend
+    this.userNIC = localStorage.getItem('userNIC'); // get user nic from sessions
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CardPage');
-    var link = 'http://localhost:3004/Account/123';
+    var link = 'http://'+this.bckendIp+':3001/customer/'+this.userNIC;
     this.http.get(link).subscribe(function (response) {
       console.log(response);
-      this.bal=response['data'][0].Account;
+      this.bal = response['data'][0].Account;
       // console.log(this.bal);
-      localStorage.setItem('amount',this.bal);
+      localStorage.setItem('amount', this.bal);
     });
   }
 
   fromPIN() {
-    var link = 'http://localhost:5003/cardPayment/' + document.getElementById("phone").nodeValue;
+    var link = 'http://'+this.bckendIp+':5003/cardPayment/' + document.getElementById("phone").nodeValue;
     ////console.log("workkkkkkkkkkkkkkkkkkkkkkk");
     this.http.get(link).subscribe(function (response) {
       console.log(response);
@@ -56,14 +61,14 @@ export class CardPage {
     if (localStorage.getItem("pin") === this.getpin) {///get pin and convert decimal
       //console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
       console.log(this.accamount);
-      console.log(parseInt(localStorage.getItem('amount'),10) + parseInt(this.accamount));
+      console.log(parseInt(localStorage.getItem('amount'), 10) + parseInt(this.accamount));
       // console.log(this.bal);
-      var link = 'http://localhost:3004/Account/123' ;
-      this.http.put(link,{
-       
-        Account:(parseInt(localStorage.getItem('amount'),10) + parseInt(this.accamount))
+      var link = 'http://'+this.bckendIp+':3001/customer/'+this.userNIC;
+      this.http.put(link, {
 
-      }).subscribe(data =>{
+        Account: (parseInt(localStorage.getItem('amount'), 10) + parseInt(this.accamount))
+
+      }).subscribe(data => {
         alert('Payment accepted !');
       })
       localStorage.removeItem("pin");
