@@ -40,15 +40,17 @@ export class journeyHandler {
   qrData=null;
   createdCode=null;
   scannedCode=null;
+  bckendIp;
 
   constructor(public navCtrl: NavController,private barcodeScanner: BarcodeScanner,private qrScanner:QRScanner, private http: Http,private alertCtrl: AlertController) {
     localStorage.setItem('userFName','Viraj Gunathilaka');
     this.Username=localStorage.getItem('userFName');
+    this.bckendIp = localStorage.getItem('backendip'); // get ip of backend
   }
 
   //-----------Get balance by Minila---------------
   ionViewDidLoad(){
-    var link = 'http://localhost:3004/Account/123';
+    var link = 'http://'+this.bckendIp+':3004/Account/123';
     // this.http.get(link).subscribe(function (response) {
     //   console.log(response);
     //   this.accbalance=response['data'][0].Account;
@@ -75,7 +77,7 @@ export class journeyHandler {
       end: this.endLoc,
       amount: this.total
     }
-    this.http.post("http://localhost:3001/payment/", postParams1, options)//get bal and get journeyhandle
+    this.http.post("http://"+this.bckendIp+":3001/payment/", postParams1, options)//get bal and get journeyhandle
         .subscribe(data => {
           console.log(data['_body']);
          }, error => {
@@ -160,7 +162,7 @@ export class journeyHandler {
   //Get the total amount. Sends the route and bus type as parameters. In order to get the total amount user has to start a tour.
   getTotal(){
     if(this.isStart=="true"){
-      this.http.get('http://localhost:3001/total/tot/'+this.route+"/"+this.fare+"/"+this.startHaltNo+"/"+this.end_lat+"/"+this.end_lng).pipe(
+      this.http.get('http://'+this.bckendIp+':3001/total/tot/'+this.route+"/"+this.fare+"/"+this.startHaltNo+"/"+this.end_lat+"/"+this.end_lng).pipe(
               map(res => res.json())
       ).subscribe(response => {
             this.total=response.data*this.tickCount;
@@ -180,7 +182,7 @@ export class journeyHandler {
   //Get bus type fare. That means AC bus fare/Normal Bus fare/Long service bus fare
   getBusTypeFare(){
     if(this.isStart=="true"){
-      this.http.get('http://localhost:3001/total/route/'+this.busType).pipe(
+      this.http.get('http://'+this.bckendIp+':3001/total/route/'+this.busType).pipe(
           map(res => res.json())
       ).subscribe(response => {
             this.fare=response.data.normalFare;
@@ -228,7 +230,7 @@ export class journeyHandler {
       
     }
     
-    this.http.post("http://localhost:3001/journey/", postParams, options)
+    this.http.post("http://'+this.bckendIp+':3001/journey/", postParams, options)
       .subscribe(data => {
         console.log(data['_body']);
        }, error => {
@@ -240,9 +242,10 @@ export class journeyHandler {
   //Get bus halts for given bus route
   getBusRoutes(){
     
-    this.http.get('http://localhost:3001/journey/'+this.route).pipe(
+    this.http.get('http://'+this.bckendIp+':3001/journey/'+this.route).pipe(
             map(res => res.json())
     ).subscribe(response => {
+      console.log(response);
           this.routes=response.data;
           var i;
           var j;
@@ -263,7 +266,7 @@ export class journeyHandler {
   }
   //End the bus journey route
   endBusRoute(){
-    this.http.get('http://localhost:3001/journey/'+this.route).pipe(
+    this.http.get('http://'+this.bckendIp+':3001/journey/'+this.route).pipe(
             map(res => res.json())
     ).subscribe(response => {
       this.routes=response.data;
