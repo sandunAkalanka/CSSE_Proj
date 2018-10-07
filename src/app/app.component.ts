@@ -7,6 +7,12 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { journeyHandler } from '../pages/journeyHandler/journeyHandler';
 import { MapPage } from '../pages/map/map';
+import { SignInPage } from '../pages/SignIn/SignIn';
+import { SignUpPage } from '../pages/SignUp/SignUp';
+import { ResetPwdPage } from '../pages/ResetPwd/ResetPwd';
+
+import { HistoryPage } from '../pages/history/history';
+import { ProfileViewPage } from '../pages/profile-view/profile-view';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,19 +20,25 @@ import { MapPage } from '../pages/map/map';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = journeyHandler;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
+    // used ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
+      { title: 'Profile', component: ProfileViewPage },
+      // { title: 'List', component: ListPage },
       { title: 'Journey', component: journeyHandler },
-      { title: 'Map', component: MapPage }
+      { title: 'Map', component: MapPage },
+      { title: 'View History', component: HistoryPage },
+
+      { title: 'SignIn', component: SignInPage },
+      { title: 'SignUp', component: SignUpPage },
+      { title: 'ResetPwd', component: ResetPwdPage }
     ];
 
   }
@@ -37,6 +49,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      // localStorage.setItem('backendip','localhost');
+      localStorage.setItem('backendip','192.168.1.102');
     });
   }
 

@@ -1,0 +1,26 @@
+<!--
+  Generated template for the HistoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Journey History</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <button (click)="openProfileView()" ion-button block color="danger" round><ion-icon name="contact"></ion-icon> View Profile</button>
+  <button (click)="openLastJourney()" ion-button block color="danger" round><ion-icon name="undo"></ion-icon>View Last Journey</button>
+  <button (click)="openAllJourneys()" ion-button block color="danger" round><ion-icon name="stopwatch"></ion-icon>View All Journeys</button>
+  <button (click)="openGetInPoints()" ion-button block color="danger" round><ion-icon name="pin"></ion-icon>View Get in Points</button>
+  <button (click)="openGetOffPoints()" ion-button block color="danger" round><ion-icon name="pin"></ion-icon>View Get Off Points</button>
+  <button (click)="openFareStats()" ion-button block color="danger" round><ion-icon name="podium"></ion-icon>Fares Paid stats</button>
+</ion-content>
